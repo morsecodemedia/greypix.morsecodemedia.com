@@ -1,0 +1,26 @@
+/* TEAM */
+Company: MorseCodeMedia
+Comapny Website: https://www.morsecodemedia.com
+Developer: Brandon G. Morse
+Personal Website: https://www.brandonmorse.com
+Email: brandon@morsecodemedia.com                            
+Location: New Jersey, USA
+GitHub: https://github.com/morsecodemedia
+Twitter: https://twitter.com/morsecodemedia
+LinkedIn: https://www.linkedin.com/in/brandonmorse
+
+/* THANKS */
+James Tomasino: https://tomasino.org
+KWST: https://themeforest.net/user/kwst
+Dan Coulter: https://github.com/dan-coulter/phpflickr
+Andhika Desta Permana: https://github.com/desta88/Flickr-API-Codeigniter
+
+/* SITE */
+Last update: 2016-09-02
+Meta and Analytics: Robots.txt, Humans.txt, Google Analytics
+Front-end: HTML5, CSS3, Javascript, jQuery
+Back-end: PHP
+MySQL: MySQL
+Frameworks: CodeIgniter 3.x, Bootstrap 3.x
+APIs: Flickr
+Hosting: Amazon Web Services
