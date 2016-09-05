@@ -114,6 +114,11 @@ class Import extends CI_Controller {
           $newAlbums++;
         } else {
           // check if up-to-date
+          
+          echo $album['date_update'];
+          echo $albumExists->date_update;
+          exit;
+          
           if ($album['date_update'] > $albumExists->date_update) {
             // update record
             $this->gpdb->insertIntoDB($payload, "albums", $album['id']);
