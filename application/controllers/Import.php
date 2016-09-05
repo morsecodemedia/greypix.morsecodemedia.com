@@ -166,15 +166,13 @@ class Import extends CI_Controller {
     $photoDetails = $this->flickr->f->photos_getInfo($photoID);
     echo "<pre>"; print_r($photoDetails); echo "</pre>";exit;
     
-    $photoSizes = $this->flickr->f->photos_getSizes($photoID);
-    
     $payload = array("id"           => $photoDetails['photo']['id'],
                      "title"        => $photoDetails['photo']['title'],
                      "description"  => $photoDetails['photo']['description'],
                      "dateuploaded" => $photoDetails['photo']['dateuploaded'],
                      "lastupdate"   => $photoDetails['photo']['dates']['lastupdate']
                     );
-    
+    echo "<pre>"; print_r($payload); echo "</pre>";exit;
     return $payload;
     
   }
