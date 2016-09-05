@@ -57,7 +57,7 @@ class Greypix_model extends CI_Model {
   public function getAlbumByID($albumID)
   {
     $album = $this->db->get_where("albums", array("id" => $albumID));
-    return $album;
+    return $album->result();
   }
   
   /**
@@ -70,7 +70,7 @@ class Greypix_model extends CI_Model {
   public function getPhotoByID($photoID)
   {
     $photo = $this->db->get_where("pictures", array("id" => $photoID));
-    return $photo;
+    return $photo->result();
   }
   
 }
