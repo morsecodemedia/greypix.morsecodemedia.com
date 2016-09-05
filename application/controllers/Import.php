@@ -94,16 +94,15 @@ class Import extends CI_Controller {
                          "date_create"  => $album['date_create'],
                          "date_update"  => $album['date_update']
                         );
-/*
         echo "<pre>"; print_r($album); echo "</pre>";
         
         echo "<pre>"; print_r($payload); echo "</pre>";
-        exit;
-*/
         
         // check if album exists in database
         $albumExists = $this->gpdb->getAlbumByID($album['id']);
-
+        
+        echo "<pre>"; print_r($albumExists); echo "</pre>";exit;
+        
         // if no records come back
         if (!$albumExists) {
           // insert album into database
