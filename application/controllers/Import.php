@@ -185,8 +185,6 @@ class Import extends CI_Controller {
     
     $photoSizes = $this->flickr->f->photos_getSizes($photoID);
     
-    echo "<pre>"; print_r($photoSizes); echo "</pre>";exit;
-    
     return $photoSizes;
     
   }
@@ -220,9 +218,14 @@ class Import extends CI_Controller {
         foreach ($photoSizePayload as $size) {
           // insert sizes into database
           $this->gpdb->insertIntoDB($size, "picture_sizes");
-          $sizeID = $this->db->insert_id();  
+          $sizeID = $this->db->insert_id();
+            
           // create lookup record between photo and size
-          $this->gpdb->insertIntoDB($photo['id'], $sizeID);
+          $lookupPayload = array("photo_id" => $photo['id'],
+                                 "size_id"  => $sizeID
+                                );
+                          
+          $this->gpdb->insertIntoDB($lookupPayload, "pictures_sizes_lookup");
         }
       }
       
