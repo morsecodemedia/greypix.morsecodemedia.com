@@ -95,17 +95,12 @@ class Import extends CI_Controller {
                          "description"  => $album['description'],
                          "primary"      => $album['primary'],
                          "photos"       => $album['photos'],
-                         "date_create"  => $this->createDate->setTimestamp($album['date_create'])->format('U = Y-m-d H:i:s'),
-                         "date_update"  => $this->createDate->setTimestamp($album['date_update'])->format('U = Y-m-d H:i:s')
+                         "date_create"  => $this->createDate->setTimestamp($album['date_create'])->format('Y-m-d H:i:s'),
+                         "date_update"  => $this->createDate->setTimestamp($album['date_update'])->format('Y-m-d H:i:s')
                         );
-        echo "<pre>"; print_r($album); echo "</pre>";
-        
-        echo "<pre>"; print_r($payload); echo "</pre>";
-        
+
         // check if album exists in database
         $albumExists = $this->gpdb->getAlbumByID($album['id']);
-        
-        echo "<pre>"; print_r($albumExists); echo "</pre>";
         
         // if no records come back
         if (!$albumExists) {
@@ -120,8 +115,6 @@ class Import extends CI_Controller {
             $updatedAlbums++;
           }
         }
-        
-        exit;
         
         // get all photos in this album
         $photos = $this->getPhotosByAlbumID($album['id']);
