@@ -108,6 +108,8 @@ class Import extends CI_Controller {
           $newAlbums++;
         } else {
           // check if up-to-date
+          echo $this->dateObj->setTimestamp($album['date_update'])->format('Y-m-d H:i:s') . " > " . $albumExists->date_update;exit;
+          
           if ($this->dateObj->setTimestamp($album['date_update'])->format('Y-m-d H:i:s') > $albumExists->date_update) {
             // update record
             $this->gpdb->insertIntoDB($payload, "albums", $album['id']);
