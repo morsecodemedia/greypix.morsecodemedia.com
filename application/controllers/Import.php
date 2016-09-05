@@ -221,8 +221,8 @@ class Import extends CI_Controller {
           $sizeID = $this->db->insert_id();
             
           // create lookup record between photo and size
-          $lookupPayload = array("photo_id" => $photo['id'],
-                                 "size_id"  => $sizeID
+          $lookupPayload = array("picture_id" => $photo['id'],
+                                 "size_id"    => $sizeID
                                 );
                           
           $this->gpdb->insertIntoDB($lookupPayload, "pictures_sizes_lookup");
