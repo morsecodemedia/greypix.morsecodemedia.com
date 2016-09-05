@@ -33,6 +33,36 @@ class Greypix_model extends CI_Model {
   
   /**
    *
+   * Get All Pictures in Database
+   *
+  **/
+  public function getAllPictures()
+  {
+
+    $pictures = $this->db->get("pictures");
+
+    return $pictures->result();
+    
+  }
+  
+  /**
+   * 
+   * Get All Picutrue with Details
+   *
+  **/
+  public function getAllPicturesWithDetails()
+  {
+  
+    $pictures = $this->db->get("pictures")
+                         ->join("pictures_sizes_lookup", "pictures.id = pictures_sizes_lookup.picture_id", "LEFT")
+                         ->join("picture_sizes", "picture_sizes.id = pictures_sizes_lookup.size_id", "LEFT");
+
+    return $pictures->result();
+    
+  }
+  
+  /**
+   *
    * Get Randomized Resultset - Limited by Number
    * Set up for method chaining
    * 
@@ -41,10 +71,13 @@ class Greypix_model extends CI_Model {
   **/ 
   public function getRandomPicturesLimitedBy($howMany)
   {
+  
     $seed = RAND();
     $this->db->order_by($seed, 'RANDOM')
              ->limit($howMany);
+
     return $this;
+    
   }
   
   /**
@@ -56,8 +89,11 @@ class Greypix_model extends CI_Model {
   **/
   public function getAlbumByID($albumID)
   {
+  
     $album = $this->db->get_where("albums", array("id" => $albumID));
+    
     return $album->result();
+    
   }
   
   /**
@@ -69,8 +105,11 @@ class Greypix_model extends CI_Model {
   **/
   public function getPhotoByID($photoID)
   {
+  
     $photo = $this->db->get_where("pictures", array("id" => $photoID));
+    
     return $photo->result();
+    
   }
   
 }

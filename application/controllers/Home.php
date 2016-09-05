@@ -15,6 +15,10 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
+	  
+	  $pictures = $this->gpdb->getAllPicturesWithDetails();
+	  echo "<pre>"; print_r($pictures); echo "</pre>";exit;
+	  
 		$this->load->view('pages/home', $this->build_template());
 	}
 
