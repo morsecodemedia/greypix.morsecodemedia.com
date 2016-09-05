@@ -19,6 +19,10 @@ class Import extends CI_Controller {
     }
 */
 	  
+	  // DateTime objects
+	  $this->createDate = new DateTime();
+    $this->updateDate = new DateTime();
+	  
 	  // Load library
 	  $this->load->library('flickr');
 	  
@@ -91,8 +95,8 @@ class Import extends CI_Controller {
                          "description"  => $album['description'],
                          "primary"      => $album['primary'],
                          "photos"       => $album['photos'],
-                         "date_create"  => $album['date_create'],
-                         "date_update"  => $album['date_update']
+                         "date_create"  => $this->createDate->setTimestamp($album['date_create'])->format('U = Y-m-d H:i:s'),
+                         "date_update"  => $this->createDate->setTimestamp($album['date_update'])->format('U = Y-m-d H:i:s')
                         );
         echo "<pre>"; print_r($album); echo "</pre>";
         
