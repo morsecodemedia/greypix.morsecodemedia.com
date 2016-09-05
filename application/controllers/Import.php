@@ -101,7 +101,7 @@ class Import extends CI_Controller {
         // check if album exists in database
         $albumExists = $this->gpdb->getAlbumByID($album['id']);
         
-        echo "<pre>"; print_r($albumExists); echo "</pre>";exit;
+        echo "<pre>"; print_r($albumExists); echo "</pre>";
         
         // if no records come back
         if (!$albumExists) {
@@ -116,6 +116,8 @@ class Import extends CI_Controller {
             $updatedAlbums++;
           }
         }
+        
+        exit;
         
         // get all photos in this album
         $photos = $this->getPhotosByAlbumID($album['id']);
