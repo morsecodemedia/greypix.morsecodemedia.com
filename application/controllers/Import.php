@@ -118,8 +118,6 @@ class Import extends CI_Controller {
         // get all photos in this album
         $photos = $this->getPhotosByAlbumID($album['id']);
         
-        echo "<pre>"; print_r($photos); echo "</pre>";exit;
-        
         // if there are photos in the album
         if ($photos) {
           $pictureLog = $this->importPhotos($photos);
@@ -166,6 +164,8 @@ class Import extends CI_Controller {
     }
     
     $photoDetails = $this->flickr->f->photos_getInfo($photoID);
+    echo "<pre>"; print_r($photoDetails); echo "</pre>";exit;
+    
     $photoSizes = $this->flickr->f->photos_getSizes($photoID);
     
     $payload = array("id"           => $photoDetails['photo']['id'],
@@ -204,9 +204,9 @@ class Import extends CI_Controller {
     $deletedPhotos = 0;
     
     // loop through the photos
-    foreach ($photos as $photo) {
+    foreach ($photos['photoset']['photo'] as $photo) {
       // get photo details
-      $photoDetailsPayload = $this->getPhotoDetailsByID($photo['id']);
+      $photoDetailsPayload = $this->getPhotoDetailsByID($photo['id']);;
       
       // check if the photo exist
       $photoExists = $this->gpdb->getPhotoByID($photo['id']);
