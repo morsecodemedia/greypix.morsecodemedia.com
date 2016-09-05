@@ -19,9 +19,8 @@ class Import extends CI_Controller {
     }
 */
 	  
-	  // DateTime objects
-	  $this->createDate = new DateTime();
-    $this->updateDate = new DateTime();
+	  // DateTime object
+	  $this->dateObj = new DateTime();
 	  
 	  // Load library
 	  $this->load->library('flickr');
@@ -95,8 +94,8 @@ class Import extends CI_Controller {
                          "description"  => $album['description'],
                          "primary"      => $album['primary'],
                          "photos"       => $album['photos'],
-                         "date_create"  => $this->createDate->setTimestamp($album['date_create'])->format('Y-m-d H:i:s'),
-                         "date_update"  => $this->createDate->setTimestamp($album['date_update'])->format('Y-m-d H:i:s')
+                         "date_create"  => $this->dateObj->setTimestamp($album['date_create'])->format('Y-m-d H:i:s'),
+                         "date_update"  => $this->dateObj->setTimestamp($album['date_update'])->format('Y-m-d H:i:s')
                         );
         echo "<pre>"; print_r($album); echo "</pre>";
         
@@ -116,7 +115,7 @@ class Import extends CI_Controller {
           // check if up-to-date
           
           echo $album['date_update'];
-          echo $albumExists->date_update;
+          echo $albumExists[0]->date_update;
           exit;
           
           if ($album['date_update'] > $albumExists->date_update) {
@@ -125,8 +124,6 @@ class Import extends CI_Controller {
             $updatedAlbums++;
           }
         }
-        
-        exit;
         
         // get all photos in this album
         $photos = $this->getPhotosByAlbumID($album['id']);
