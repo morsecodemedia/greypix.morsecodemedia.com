@@ -164,15 +164,14 @@ class Import extends CI_Controller {
     }
     
     $photoDetails = $this->flickr->f->photos_getInfo($photoID);
-    echo "<pre>"; print_r($photoDetails); echo "</pre>";
     
     $payload = array("id"           => $photoDetails['photo']['id'],
                      "title"        => $photoDetails['photo']['title'],
                      "description"  => $photoDetails['photo']['description'],
-                     "dateuploaded" => $photoDetails['photo']['dateuploaded'],
-                     "lastupdate"   => $photoDetails['photo']['dates']['lastupdate']
+                     "dateuploaded" => $this->dateObj->setTimestamp($photoDetails['photo']['dateuploaded'])->format('Y-m-d H:i:s'),
+                     "lastupdate"   => $this->dateObj->setTimestamp($photoDetails['photo']['dates']['lastupdate'])->format('Y-m-d H:i:s')
                     );
-    echo "<pre>"; print_r($payload); echo "</pre>";exit;
+
     return $payload;
     
   }
@@ -185,6 +184,8 @@ class Import extends CI_Controller {
     }
     
     $photoSizes = $this->flickr->f->photos_getSizes($photoID);
+    
+    echo "<pre>"; print_r($photoSizes); echo "</pre>";exit;
     
     return $photoSizes;
     
