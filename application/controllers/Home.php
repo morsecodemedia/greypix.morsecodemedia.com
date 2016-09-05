@@ -9,7 +9,7 @@ class Home extends CI_Controller {
 	  parent::__construct();
 	  	  
 	  // Load models
-	  $this->load->model('GreyPix_Model', 'gpdb');
+	  $this->load->model('Greypix_model', 'gpdb');
 	  
 	}  
 
