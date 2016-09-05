@@ -25,6 +25,8 @@ class Greypix_model extends CI_Model {
     } else {
       // insert record
       $this->db->insert($table, $payload);
+      echo $this->db->last_query();
+      exit;
     }
     
     return true;
