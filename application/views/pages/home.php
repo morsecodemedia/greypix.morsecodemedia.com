@@ -5,16 +5,16 @@
     $i = 0;
     foreach ($randPix as $rp):
       $i++;
-      if ($i%2 == 1) :
+      if ($i%3 == 1) :
 ?>
         <div class="hero-grid">
           <div class="overlay"></div>
-          <div class="hero-slider <?php echo ($i=1) ? "synkslider" : ""; ?> owl-carousel" data-attime="3220" data-rtlt="false">
+          <div class="hero-slider <?php echo ($i==1) ? "synkslider" : ""; ?> owl-carousel" data-attime="3220" data-rtlt="false">
 <?php endif; ?>
             <div class="item">
               <div class="bg" style="background-image:url(<?php echo $rp->lg1600_size; ?>)"></div>
             </div>
-<?php if ($i%2 == 0) : ?>
+<?php if ($i%3 == 0) : ?>
           </div>
         </div>
 <?php 
