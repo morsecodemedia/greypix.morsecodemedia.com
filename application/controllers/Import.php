@@ -66,14 +66,6 @@ class Import extends CI_Controller {
   	
 	}
 	
-	private function getAllAlbums()
-	{
-    
-    $albums = $this->flickr->f->photosets_getList($this->config->item('flickr_user_id'));
-    return $albums;
-    
-	}
-	
 	public function import_albums()
 	{
     
@@ -134,6 +126,14 @@ class Import extends CI_Controller {
     $msg .= (isset($pictureLog)) ? $pictureLog : "";
     
     return $msg;
+    
+	}
+		
+	private function getAllAlbums()
+	{
+    
+    $albums = $this->flickr->f->photosets_getList($this->config->item('flickr_user_id'));
+    return $albums;
     
 	}
 	

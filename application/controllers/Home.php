@@ -41,28 +41,37 @@ class Home extends CI_Controller {
 	public function albums($albumID=null)
 	{
   	
-  	if ($albumID) {
-    	// if an album ID is supplied - go to that album
+  	if ($albumID) { // if an album ID is supplied - go to that album's detail page
+
+    	$album = $this->gpdb->getAlbumByID($albumID);
+      
+      echo "<pre>"; print_r($album); echo "</pre>";exit;
+    	
+    	//$this->data['album'] = $album;
+    	
+  	  //$this->load->view('pages/albums-details', $this->build_template());
+      
+  	} else {
+
+    	$albums = $this->gpdb->getAllAlbumsDesc();
+  
+    	if ($albums) {
+      	foreach ($albums as $album) {
+        	
+        	$lg1600 = $this->gpdb->getSpecificSizeOfPictureID("Large 1600", $album->primary);
+          $orig = $this->gpdb->getSpecificSizeOfPictureID("Original", $album->primary);
+          
+          $album->lg1600_size = ($lg1600) ? $lg1600[0]->source : false;
+          $album->orig_size = ($orig) ? $orig[0]->source : false;
+        	
+      	}
+    	}
+    	
+    	$this->data['albums'] = $albums;
+    	
+  	  $this->load->view('pages/albums', $this->build_template());
     	
   	}
-  	
-  	$albums = $this->gpdb->getAllAlbumsDesc();
-
-  	if ($albums) {
-    	foreach ($albums as $album) {
-      	
-      	$lg1600 = $this->gpdb->getSpecificSizeOfPictureID("Large 1600", $album->primary);
-        $orig = $this->gpdb->getSpecificSizeOfPictureID("Original", $album->primary);
-        
-        $album->lg1600_size = ($lg1600) ? $lg1600[0]->source : false;
-        $album->orig_size = ($orig) ? $orig[0]->source : false;
-      	
-    	}
-  	}
-  	
-  	$this->data['albums'] = $albums;
-  	
-	  $this->load->view('pages/albums', $this->build_template());
   	
 	}
 

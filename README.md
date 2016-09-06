@@ -6,9 +6,9 @@
 - Create cronjob to run import script nightly
 - Write blog post
 - Create project page on morsecodemedia.com
+- Create import interface
 
 ## Photography Section
-- Build Albums landing page
 - Build Album details page
 - Create functionality to remove photos/albums from database that no longer return from Flickr API
 - Implement tagging on albums
