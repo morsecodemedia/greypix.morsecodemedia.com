@@ -75,10 +75,34 @@ class Greypix_model extends CI_Model {
   {
   
     $seed = RAND();
-    $this->db->order_by($seed, 'RANDOM')
-             ->limit($howMany);
-
-    return $this;
+    $this->db->select("*");
+    $this->db->from("pictures");
+    $this->db->order_by($seed, 'RANDOM');
+    $this->db->limit($howMany);
+    $pictures = $this->db->get();
+    
+    return $pictures->result();
+    
+  }
+  
+  /**
+   *
+   * Get all sizes of picture by ID
+   *
+   * @param int $pictureID
+   *
+  **/
+  public function getSizesByPictureID($pictureID)
+  {
+    
+    $this->db->select("*");
+    $this->db->from("pictures");
+    $this->db->join("pictures_sizes_lookup", "pictures.id = pictures_sizes_lookup.picture_id", "LEFT");
+    $this->db->join("picture_sizes", "picture_sizes.id = pictures_sizes_lookup.size_id", "LEFT");
+    $this->db->where("pictures.id", $pictureID);
+    $pictures = $this->db->get();
+    
+    return $pictures->result();
     
   }
   
