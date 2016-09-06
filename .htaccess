@@ -1,4 +1,4 @@
-AddType application/octet-stream .otf .ttf .svg .eot .woff
+AddType application/octet-stream .otf .ttf .svg .eot .woff .woff2
 AddType application/x-font-ttf .ttf
 AddType image/svg+xml .svg
 AddType application/vnd.ms-fontobject .eot
@@ -13,7 +13,7 @@ AddDefaultCharset UTF-8
 	#RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 	
 	# Forces Trailing Slash
-	RewriteCond %{REQUEST_URI}  !\.(php|html?|jpg|gif|css|js|png|mp4|mov|avi|jpeg|txt|pdf|xml|swf|htc|svg|rar|zip|ttf|eot|woff)$
+	RewriteCond %{REQUEST_URI}  !\.(php|html?|jpg|gif|css|js|png|mp4|mov|avi|jpeg|txt|pdf|xml|swf|htc|svg|rar|zip|ttf|eot|woff|woff2)$
 	RewriteRule ^(.*)([^/])$ http://%{HTTP_HOST}/$1$2/ [L,R=301]
 	
 	# Trailing slash (non specific file) Test thoroughly
@@ -102,6 +102,7 @@ Options -Indexes +FollowSymLinks
 
   # Web fonts
   ExpiresByType application/font-woff                 "access plus 1 month"
+  ExpiresByType application/font-woff2                 "access plus 1 month"  
   ExpiresByType application/vnd.ms-fontobject         "access plus 1 month"
   ExpiresByType application/x-font-ttf                "access plus 1 month"
   ExpiresByType font/opentype                         "access plus 1 month"
