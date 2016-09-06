@@ -52,11 +52,13 @@ class Greypix_model extends CI_Model {
   **/
   public function getAllPicturesWithDetails()
   {
-  
-    $pictures = $this->db->get("pictures")
-                         ->join("pictures_sizes_lookup", "pictures.id = pictures_sizes_lookup.picture_id", "LEFT")
-                         ->join("picture_sizes", "picture_sizes.id = pictures_sizes_lookup.size_id", "LEFT");
-
+    
+    $this->db->select("*");
+    $this->db->from("pictures");
+    $this->db->join("pictures_sizes_lookup", "pictures.id = pictures_sizes_lookup.picture_id", "LEFT");
+    $this->db->join("picture_sizes", "picture_sizes.id = pictures_sizes_lookup.size_id", "LEFT");
+    $pictures = $this->db->get();
+    
     return $pictures->result();
     
   }
