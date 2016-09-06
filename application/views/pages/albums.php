@@ -37,7 +37,7 @@
                               <div class="overlay"></div>
                               <div class="grid-item">
                                   <h3><a href="/albums/<?php echo $album->id; ?>/"><?php echo $album->title; ?></a></h3>
-                                  <!-- <span>{TAGS}</span> -->
+                                  <span><?php echo $album->description; ?></span>
                               </div>
                           </div>
                       </div>
