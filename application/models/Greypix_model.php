@@ -64,6 +64,22 @@ class Greypix_model extends CI_Model {
     return $albums->result();
     
   }
+
+  /**
+   *
+   * Get All Albums in Database - Desc order
+   *
+  **/
+  public function getAllAlbumsDesc()
+  {
+    $this->db->select("*");
+    $this->db->from("albums");
+    $this->db->order_by("albums.date_create", "DESC");
+    $albums = $this->db->get();
+    
+    return $albums->result();
+    
+  }
   
   // ! Picture Methods
   
