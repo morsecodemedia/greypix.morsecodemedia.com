@@ -108,6 +108,27 @@ class Greypix_model extends CI_Model {
   
   /**
    *
+   * Get specific size of a picture by id
+   *
+   * @param string $label
+   * @param int $pictureID
+   *
+  **/
+  public function getSpecificSizeOfPictureID($label=string, $pictureID)
+  {
+    $this->db->select("*");
+    $this->db->from("pictures");
+    $this->db->join("pictures_sizes_lookup", "pictures.id = pictures_sizes_lookup.picture_id", "LEFT");
+    $this->db->join("picture_sizes", "picture_sizes.id = pictures_sizes_lookup.size_id", "LEFT");
+    $this->db->where("pictures.id", $pictureID);
+    $this->db->where("picture_sizes.label", $label);
+    $pictures = $this->db->get();
+    
+    return $pictures->result();
+  }
+  
+  /**
+   *
    * Get album from Flickr-assigned Album ID
    *
    * @param int $albumID
