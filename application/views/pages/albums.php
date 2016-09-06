@@ -31,20 +31,20 @@
                 <?php foreach ($albums as $album) : ?>
                   <!-- portfolio item -->
                   <div class="portfolio_item {tags}">
-                      <img src="<?php echo $album->lg1600_size; ?>" alt="<?php echo $album->title; ?>">
+                      <img src="<?php echo (isset($album->lg1600_size)) ? $album->lg1600_size : $album->orig_size; ?>" alt="<?php echo $album->title; ?>">
                       <div class="port-desc-holder">
                           <div class="port-desc">
                               <div class="overlay"></div>
                               <div class="grid-item">
                                   <h3><a href="/albums/<?php echo $album->id; ?>/"><?php echo $album->title; ?></a></h3>
-                                  <span>{TAGS}</span>
+                                  <!-- <span>{TAGS}</span> -->
                               </div>
                           </div>
                       </div>
                       <div class="port-subtitle-holder">
                           <div class="port-subtitle">
                               <h3><a href="/albums/<?php echo $album->id; ?>/"><?php echo $album->title; ?></a></h3>
-                              <span><a href="#">{TAGS}</a></span>
+                              <!-- <span><a href="#">{TAGS}</a></span> -->
                           </div>
                       </div>
                   </div>
