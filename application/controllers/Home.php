@@ -46,6 +46,9 @@ class Home extends CI_Controller {
     	
   	}
   	
+  	$albums = $this->gpdb->getAllAlbumsDesc();
+  	echo "<pre>"; print_r($albums); echo "</pre>";exit;
+  	
 	  $this->load->view('pages/albums', $this->build_template());
   	
 	}

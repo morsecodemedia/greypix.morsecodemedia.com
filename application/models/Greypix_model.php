@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Greypix_model extends CI_Model {
 
+  // ! CRUD Methods
+
   /**
    *
    * Insert or Update Record into Database
@@ -28,6 +30,56 @@ class Greypix_model extends CI_Model {
     }
     
     return true;
+    
+  }
+  
+  // ! Album Methods
+
+  /**
+   *
+   * Get album from Flickr-assigned Album ID
+   *
+   * @param int $albumID
+   *
+  **/
+  public function getAlbumByID($albumID)
+  {
+  
+    $album = $this->db->get_where("albums", array("id" => $albumID));
+    
+    return $album->result();
+    
+  }  
+  
+  /**
+   *
+   * Get All Albums in Database
+   *
+  **/
+  public function getAllAlbums()
+  {
+    
+    $albums = $this->db->get("albums");
+    
+    return $albums->result();
+    
+  }
+  
+  // ! Picture Methods
+  
+  /**
+   *
+   * Get photo by Flickr-assigned Photo ID
+   *
+   * @param int $photoID
+   *
+  **/
+  public function getPhotoByID($photoID)
+  {
+  
+    $photo = $this->db->get_where("pictures", array("id" => $photoID));
+    
+    return $photo->result();
     
   }
   
@@ -125,38 +177,6 @@ class Greypix_model extends CI_Model {
     $pictures = $this->db->get();
     
     return $pictures->result();
-  }
-  
-  /**
-   *
-   * Get album from Flickr-assigned Album ID
-   *
-   * @param int $albumID
-   *
-  **/
-  public function getAlbumByID($albumID)
-  {
-  
-    $album = $this->db->get_where("albums", array("id" => $albumID));
-    
-    return $album->result();
-    
-  }
-  
-  /**
-   *
-   * Get photo by Flickr-assigned Photo ID
-   *
-   * @param int $photoID
-   *
-  **/
-  public function getPhotoByID($photoID)
-  {
-  
-    $photo = $this->db->get_where("pictures", array("id" => $photoID));
-    
-    return $photo->result();
-    
   }
   
 }
