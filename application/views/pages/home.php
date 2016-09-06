@@ -1,7 +1,25 @@
 <?php
   if ($randPix) :
-    $item = array_chunk($randPix, 3, true); 
-    echo "<pre>"; print_r($item); echo "</pre>";
+    //$item = array_chunk($randPix, 3, true); 
+    
+    $i = 0;
+    foreach ($randPix as $rp):
+      $i++;
+      if ($i%2 == 1) :
+?>
+        <div class="hero-grid">
+          <div class="overlay"></div>
+          <div class="hero-slider <?php echo ($i=1) ? "synkslider" : ""; ?> owl-carousel" data-attime="3220" data-rtlt="false">
+<?php endif; ?>
+            <div class="item">
+              <div class="bg" style="background-image:url(<?php echo $rp->lg1600; ?>)"></div>
+            </div>
+<?php if ($i%2 == 0) : ?>
+          </div>
+        </div>
+<?php 
+      endif;
+    endforeach;
   endif;
   exit; 
 ?>
