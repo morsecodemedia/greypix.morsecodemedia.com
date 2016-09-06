@@ -1,3 +1,11 @@
+<?php
+  if ($randPix) :
+    $item = array_chunk($randPix, 3, true); 
+    echo "<pre>"; print_r($item); echo "</pre>";
+  endif;
+  exit; 
+?>
+
 <?php echo $header; ?>
 <!--=============== Conten holder  ===============-->
 <div class="content-holder elem scale-bg2 transition3" >
@@ -21,10 +29,19 @@
                             <div class="item">Vacations</div>
                         </div>
                     </div>
-                    <h4><a  href="portfolio.html">Enter</a></h4>
+                    <h4><a href="/albums/">Enter</a></h4>
                 </div>
             </div>
             <!-- Hero title end  -->
+            
+<!--
+            <?php
+              if ($randPix) :
+                $item = array_chunk($randPix, 3, true); 
+              endif; 
+            ?>
+-->
+            
             <!-- 1 -->
             <div class="hero-grid">
                 <div class="overlay"></div>

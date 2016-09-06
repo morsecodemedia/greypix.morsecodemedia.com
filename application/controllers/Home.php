@@ -24,15 +24,13 @@ class Home extends CI_Controller {
         $lg1600 = $this->gpdb->getSpecificSizeOfPictureID("Large 1600", $rp->id);
         $orig = $this->gpdb->getSpecificSizeOfPictureID("Original", $rp->id);
         
-        echo "<pre>"; print_r($lg1600); echo "</pre>";
-        echo "<pre>"; print_r($orig); echo "</pre>";
-        
         $rp->lg1600_size = ($lg1600) ? $lg1600[0]->source : false;
         $rp->orig_size = ($orig) ? $orig[0]->source : false;
 
-        echo "<pre>"; print_r($rp); echo "</pre>";exit;
       }  
     }
+	  
+	  $this->data['randPix'];
 	  
 		$this->load->view('pages/home', $this->build_template());
 	}
