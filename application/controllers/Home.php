@@ -7,6 +7,9 @@ class Home extends CI_Controller {
   {
 	  
 	  parent::__construct();
+	  
+	  // the an empty data array
+	  $this->data = array();
 	  	  
 	  // Load models
 	  $this->load->model('Greypix_model', 'gpdb');
