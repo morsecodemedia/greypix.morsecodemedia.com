@@ -16,8 +16,20 @@ class Home extends CI_Controller {
 	public function index()
 	{
 	  
-	  $pictures = $this->gpdb->getRandomPicturesLimitedBy(12);
-	  echo "<pre>"; print_r($pictures); echo "</pre>";exit;
+	  $randPix = $this->gpdb->getRandomPicturesLimitedBy(12);
+    
+    if ($randPix) {
+      foreach ($randPix as $rp) {
+        
+        $lg1600 = $this->gpdb->getSpecificSizeOfPictureID("Large 1600", $rp->id);
+        $orig = $this->gpdb->getSpecificSizeOfPictureID("Original", $rp->id);
+        
+        if ($lg1600) ? $rp['lg1600_size'] = $lg1600->source : false;
+        if ($orig) ? $rp['orig_size'] = $orig->source : false;
+
+        echo "<pre>"; print_r($rp); echo "</pre>";exit;
+      }  
+    }
 	  
 		$this->load->view('pages/home', $this->build_template());
 	}
