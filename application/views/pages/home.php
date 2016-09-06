@@ -1,29 +1,3 @@
-<?php
-  if ($randPix) :
-    //$item = array_chunk($randPix, 3, true); 
-    
-    $i = 0;
-    foreach ($randPix as $rp):
-      $i++;
-      if ($i%3 == 1) :
-?>
-        <div class="hero-grid">
-          <div class="overlay"></div>
-          <div class="hero-slider <?php echo ($i==1) ? "synkslider" : ""; ?> owl-carousel" data-attime="3220" data-rtlt="false">
-<?php endif; ?>
-            <div class="item">
-              <div class="bg" style="background-image:url(<?php echo $rp->lg1600_size; ?>)"></div>
-            </div>
-<?php if ($i%3 == 0) : ?>
-          </div>
-        </div>
-<?php 
-      endif;
-    endforeach;
-  endif;
-  exit; 
-?>
-
 <?php echo $header; ?>
 <!--=============== Conten holder  ===============-->
 <div class="content-holder elem scale-bg2 transition3" >
@@ -50,80 +24,31 @@
                     <h4><a href="/albums/">Enter</a></h4>
                 </div>
             </div>
-            <!-- Hero title end  -->
-            
-<!--
+            <!-- Hero title end  -->           
+            <!-- Homepage Sliders (4 sliders / 3 slides per slider) -->             
             <?php
               if ($randPix) :
-                $item = array_chunk($randPix, 3, true); 
-              endif; 
+                $i = 0;
+                foreach ($randPix as $rp):
+                  $i++;
+                  if ($i%3 == 1) :
             ?>
--->
-            
-            <!-- 1 -->
-            <div class="hero-grid">
-                <div class="overlay"></div>
-                <div class="hero-slider synkslider owl-carousel" data-attime="3220" data-rtlt="false">
-                    <div class="item">
-                        <div class="bg" style="background-image:url(/dist/images/bg/1.jpg)"></div>
+                    <div class="hero-grid">
+                      <div class="overlay"></div>
+                      <div class="hero-slider <?php echo ($i==1) ? "synkslider" : ""; ?> owl-carousel" data-attime="3220" data-rtlt="false">
+            <?php endif; ?>
+                        <div class="item">
+                          <div class="bg" style="background-image:url(<?php echo $rp->lg1600_size; ?>)"></div>
+                        </div>
+            <?php if ($i%3 == 0) : ?>
+                      </div>
                     </div>
-                    <div class="item">
-                        <div class="bg" style="background-image:url(/dist/images/bg/1.jpg)"></div>
-                    </div>
-                    <div class="item">
-                        <div class="bg" style="background-image:url(/dist/images/bg/1.jpg)"></div>
-                    </div>
-                </div>
-            </div>
-            <!-- 1 end -->
-            <!-- 2 -->
-            <div class="hero-grid">
-                <div class="overlay"></div>
-                <div class="hero-slider owl-carousel" data-attime="3220" data-rtlt="false">
-                    <div class="item">
-                        <div class="bg" style="background-image:url(/dist/images/bg/1.jpg)"></div>
-                    </div>
-                    <div class="item">
-                        <div class="bg" style="background-image:url(/dist/images/bg/1.jpg)"></div>
-                    </div>
-                    <div class="item">
-                        <div class="bg" style="background-image:url(/dist/images/bg/1.jpg)"></div>
-                    </div>
-                </div>
-            </div>
-            <!-- 2end -->
-            <!-- 3 -->
-            <div class="hero-grid">
-                <div class="overlay"></div>
-                <div class="hero-slider owl-carousel"  data-attime="3220" data-rtlt="true">
-                    <div class="item">
-                        <div class="bg" style="background-image:url(/dist/images/bg/1.jpg)"></div>
-                    </div>
-                    <div class="item">
-                        <div class="bg" style="background-image:url(/dist/images/bg/1.jpg)"></div>
-                    </div>
-                    <div class="item">
-                        <div class="bg" style="background-image:url(/dist/images/bg/1.jpg)"></div>
-                    </div>
-                </div>
-            </div>
-            <!-- 3end -->
-            <!-- 4 -->
-            <div class="hero-grid">
-                <div class="overlay"></div>
-                <div class="hero-slider owl-carousel" data-attime="3220" data-rtlt="true">
-                    <div class="item">
-                        <div class="bg" style="background-image:url(/dist/images/bg/1.jpg)"></div>
-                    </div>
-                    <div class="item">
-                        <div class="bg" style="background-image:url(/dist/images/bg/1.jpg)"></div>
-                    </div>
-                    <div class="item">
-                        <div class="bg" style="background-image:url(/dist/images/bg/1.jpg)"></div>
-                    </div>
-                </div>
-            </div>
-            <!-- 4end -->
+            <?php 
+                  endif;
+                endforeach;
+              endif;
+            ?>
+            <!-- Homepage Sliders end -->
         </div>
     </div>
 </div>
