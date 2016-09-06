@@ -24,8 +24,8 @@ class Home extends CI_Controller {
         $lg1600 = $this->gpdb->getSpecificSizeOfPictureID("Large 1600", $rp->id);
         $orig = $this->gpdb->getSpecificSizeOfPictureID("Original", $rp->id);
         
-        $rp['lg1600_size'] = ($lg1600) ? $lg1600->source : false;
-        $rp['orig_size'] = ($orig) ? $orig->source : false;
+        $rp->lg1600_size = ($lg1600) ? $lg1600['source'] : false;
+        $rp->orig_size = ($orig) ? $orig['source'] : false;
 
         echo "<pre>"; print_r($rp); echo "</pre>";exit;
       }  
