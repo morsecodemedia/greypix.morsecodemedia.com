@@ -47,7 +47,20 @@ class Home extends CI_Controller {
   	}
   	
   	$albums = $this->gpdb->getAllAlbumsDesc();
-  	echo "<pre>"; print_r($albums); echo "</pre>";exit;
+
+  	if ($albums) {
+    	foreach ($albums as $album) {
+      	
+      	$lg1600 = $this->gpdb->getSpecificSizeOfPictureID("Large 1600", $album->primary);
+        $orig = $this->gpdb->getSpecificSizeOfPictureID("Original", $album->primary);
+        
+        $album->lg1600_size = ($lg1600) ? $lg1600[0]->source : false;
+        $album->orig_size = ($orig) ? $orig[0]->source : false;
+      	
+    	}
+  	}
+  	
+  	$this->data['albums'] = $albums;
   	
 	  $this->load->view('pages/albums', $this->build_template());
   	

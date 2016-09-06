@@ -27,29 +27,30 @@
       <div class="resize-carousel-holder">
           <div class="p_horizontal_wrap">
               <div id="portfolio_horizontal_container">
-              
+              <?php if ($albums) : ?>
+                <?php foreach ($albums as $album) : ?>
                   <!-- portfolio item -->
                   <div class="portfolio_item {tags}">
-                      <img src="/dist/images/bg/1.jpg" alt="">
+                      <img src="<?php echo $album->lg1600_size; ?>" alt="<?php echo $album->title; ?>">
                       <div class="port-desc-holder">
                           <div class="port-desc">
                               <div class="overlay"></div>
                               <div class="grid-item">
-                                  <h3><a href="/albums/{ALBUM_ID}/">{ALBUM_TITLE}</a></h3>
+                                  <h3><a href="/albums/<?php echo $album->id; ?>/"><?php echo $album->title; ?></a></h3>
                                   <span>{TAGS}</span>
                               </div>
                           </div>
                       </div>
                       <div class="port-subtitle-holder">
                           <div class="port-subtitle">
-                              <h3><a href="/albums/{ALBUM_ID}/">{ALBUM_TITLE}</a></h3>
+                              <h3><a href="/albums/<?php echo $album->id; ?>/"><?php echo $album->title; ?></a></h3>
                               <span><a href="#">{TAGS}</a></span>
                           </div>
                       </div>
                   </div>
                   <!-- portfolio item end -->
-                                                  
-                                                           
+                <?php endforeach; ?>
+              <?php endif; ?>                              
               </div>
               <!--portfolio_horizontal_container  end-->        
           </div>
