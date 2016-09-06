@@ -38,7 +38,7 @@
                       <div class="hero-slider <?php echo ($i==1) ? "synkslider" : ""; ?> owl-carousel" data-attime="3220" data-rtlt="false">
             <?php endif; ?>
                         <div class="item">
-                          <div class="bg" style="background-image:url(<?php echo $rp->lg1600_size; ?>)"></div>
+                          <div class="bg" style="background-image:url(<?php echo (isset($rp->lg1600_size)) ? $rp->lg1600_size : $rp->orig_size; ?>)"></div>
                         </div>
             <?php if ($i%3 == 0) : ?>
                       </div>
