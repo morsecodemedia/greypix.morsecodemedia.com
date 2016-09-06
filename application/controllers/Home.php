@@ -33,7 +33,7 @@ class Home extends CI_Controller {
       }  
     }
 	  
-	  $this->data['randPix'];
+	  $this->data['randPix'] = $randPix;
 	  
 		$this->load->view('pages/home', $this->build_template());
 	}
