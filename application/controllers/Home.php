@@ -44,11 +44,21 @@ class Home extends CI_Controller {
   	if ($albumID) { // if an album ID is supplied - go to that album's detail page
 
     	$album = $this->gpdb->getAlbumByID($albumID);
-      //$album[0]->photoset = 
-      $lookup = $this->gpdb->getAllPicturesByAlbumID($albumID);
-      echo "<pre>"; print_r($album); echo "</pre>";exit;
-      echo "<pre>"; print_r($lookup); echo "</pre>";
+      $album[0]->photoset = $this->gpdb->getAllPicturesByAlbumID($albumID);
+      
+      if (!empty($album[0]->photoset) || $album[0]->photoset != NULL) {
+        foreach ($album[0]->photoset as $photo) {
+        
+          $lg1600 = $this->gpdb->getSpecificSizeOfPictureID("Large 1600", $photo->picture_id);
+          $orig = $this->gpdb->getSpecificSizeOfPictureID("Original", $photo->picture_id);
+          
+          $photo->lg1600_size = ($lg1600) ? $lg1600[0]->source : false;
+          $photo->orig_size = ($orig) ? $orig[0]->source : false;
+          
+        }
+      }
     	
+    	echo "<pre>"; print_r($album); echo "</pre>";exit;
     	//$this->data['album'] = $album;
     	
   	  //$this->load->view('pages/albums-details', $this->build_template());
