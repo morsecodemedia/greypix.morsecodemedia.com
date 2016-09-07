@@ -44,7 +44,7 @@ class Home extends CI_Controller {
   	if ($albumID) { // if an album ID is supplied - go to that album's detail page
 
     	$album = $this->gpdb->getAlbumByID($albumID);
-      
+      $album->photoset = $this->gpdb->getAllPicturesByAlbumID($albumID);
       echo "<pre>"; print_r($album); echo "</pre>";exit;
     	
     	//$this->data['album'] = $album;

@@ -85,12 +85,28 @@ class Greypix_model extends CI_Model {
   
   /**
    *
-   * Get photo by Flickr-assigned Photo ID
+   * Get All Pictures by Album ID
+   *
+   * @param int $albumID
+   *
+  **/
+  public function getAllPicturesByAlbumID($albumID)
+  {
+    
+    $pictures = $this->db->get_where("albums_pictures_lookup", array("album_id" => $albumID));
+    
+    return $pictures->result();
+    
+  }
+  
+  /**
+   *
+   * Get picture by Flickr-assigned Photo ID
    *
    * @param int $photoID
    *
   **/
-  public function getPhotoByID($photoID)
+  public function getPictureByID($photoID)
   {
   
     $photo = $this->db->get_where("pictures", array("id" => $photoID));

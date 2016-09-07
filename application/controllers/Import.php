@@ -112,7 +112,15 @@ class Import extends CI_Controller {
         
         // if there are photos in the album
         if ($photos) {
+          // import the pictures into the database
           $pictureLog = $this->importPhotos($photos);
+          // associate the pictures with albums in a lookup table
+          foreach ($photos['photoset']['photo'] as $photo) {
+            $payload = array("album_id"   => $album['id'],
+                             "picture_id" =>  $photo['id']
+                            );
+            $this->gpdb->insertIntoDB($payload, "albums_pictures_lookup");
+          }
         }
  
       }
@@ -206,7 +214,7 @@ class Import extends CI_Controller {
       $photoDetailsPayload = $this->getPhotoDetailsByID($photo['id']);;
       
       // check if the photo exist
-      $photoExists = $this->gpdb->getPhotoByID($photo['id']);
+      $photoExists = $this->gpdb->getPictureByID($photo['id']);
 
       if (!$photoExists) {
         // insert photo into database
