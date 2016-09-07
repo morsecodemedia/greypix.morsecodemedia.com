@@ -49,19 +49,21 @@ class Home extends CI_Controller {
       if (!empty($album[0]->photoset) || $album[0]->photoset != NULL) {
         foreach ($album[0]->photoset as $photo) {
         
-          $lg1600 = $this->gpdb->getSpecificSizeOfPictureID("Large 1600", $photo->picture_id);
-          $orig = $this->gpdb->getSpecificSizeOfPictureID("Original", $photo->picture_id);
+          $details = $this->gpdb->getPictureByID($photo->picture_id);
+          $lg1600  = $this->gpdb->getSpecificSizeOfPictureID("Large 1600", $photo->picture_id);
+          $orig    = $this->gpdb->getSpecificSizeOfPictureID("Original", $photo->picture_id);
           
+          $photo->title       = (preg_match("/[a-z]/i", $details->title)) ? $details->title : false;
+          $photo->description = (preg_match("/[a-z]/i", $details->description)) ? $details->description : false;
           $photo->lg1600_size = ($lg1600) ? $lg1600[0]->source : false;
-          $photo->orig_size = ($orig) ? $orig[0]->source : false;
+          $photo->orig_size   = ($orig) ? $orig[0]->source : false;
           
         }
       }
     	
-    	echo "<pre>"; print_r($album); echo "</pre>";exit;
-    	//$this->data['album'] = $album;
+    	$this->data['album'] = $album;
     	
-  	  //$this->load->view('pages/albums-details', $this->build_template());
+  	  $this->load->view('pages/album-details', $this->build_template());
       
   	} else {
 
@@ -71,10 +73,10 @@ class Home extends CI_Controller {
       	foreach ($albums as $album) {
         	
         	$lg1600 = $this->gpdb->getSpecificSizeOfPictureID("Large 1600", $album->primary);
-          $orig = $this->gpdb->getSpecificSizeOfPictureID("Original", $album->primary);
+          $orig   = $this->gpdb->getSpecificSizeOfPictureID("Original", $album->primary);
           
           $album->lg1600_size = ($lg1600) ? $lg1600[0]->source : false;
-          $album->orig_size = ($orig) ? $orig[0]->source : false;
+          $album->orig_size   = ($orig) ? $orig[0]->source : false;
         	
       	}
     	}
