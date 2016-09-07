@@ -23,13 +23,13 @@
                 <li>
                     <i class="fa fa-calendar"></i>
                     <div class="pd-holder">
-                        <h5>Date Created : <?php echo date("M d, Y", $album[0]->date_create); ?></h5>
+                        <h5>Date Created : <?php echo date("M d, Y", strtotime($album[0]->date_create)); ?></h5>
                     </div>
                 </li>
                 <li>
                     <i class="fa fa-calendar"></i>
                     <div class="pd-holder">
-                        <h5>Last Updated : <?php echo date("M d, Y", $album[0]->date_update); ?></h5>
+                        <h5>Last Updated : <?php echo date("M d, Y", strtotime($album[0]->date_update)); ?></h5>
                     </div>
                 </li>
             </ul>
