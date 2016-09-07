@@ -53,14 +53,14 @@ class Home extends CI_Controller {
           $lg1600  = $this->gpdb->getSpecificSizeOfPictureID("Large 1600", $photo->picture_id);
           $orig    = $this->gpdb->getSpecificSizeOfPictureID("Original", $photo->picture_id);
           
-          $photo->title       = (preg_match("/[a-z]/i", $details->title)) ? $details->title : false;
-          $photo->description = (preg_match("/[a-z]/i", $details->description)) ? $details->description : false;
+          $photo->title       = (preg_match("/[a-z]/i", $details[0]->title)) ? $details[0]->title : false;
+          $photo->description = (preg_match("/[a-z]/i", $details[0]->description)) ? $details[0]->description : false;
           $photo->lg1600_size = ($lg1600) ? $lg1600[0]->source : false;
           $photo->orig_size   = ($orig) ? $orig[0]->source : false;
           
         }
       }
-    	
+
     	$this->data['album'] = $album;
     	
   	  $this->load->view('pages/album-details', $this->build_template());
