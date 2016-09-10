@@ -4,9 +4,9 @@
 <div class="nav-holder">
     <nav>
         <ul>
-            <li><a href="/" class="act-link">Home</a></li>
-            <li><a href="/albums/">Albums</a></li>
-            <li><a href="/videos/">Videos</a></li>
+            <li><a href="/" <?php echo ($this->uri->segment(1, 0) === 0) ? 'class="act-link"' : ''; ?>>Home</a></li>
+            <li><a href="/albums/" <?php echo ($this->uri->segment(1, 0) == "albums") ? 'class="act-link"' : ''; ?>>Albums</a></li>
+            <!-- <li><a href="/videos/">Videos</a></li> -->
         </ul>
     </nav>
 </div>
