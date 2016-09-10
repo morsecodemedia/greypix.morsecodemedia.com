@@ -619,10 +619,9 @@ function importSubmit() {
   $("#import-script").on("click", function() {
     $.ajax({
       type: "POST",
-      url: "/import/import-albums/";
-      cache: false
+      url: "/import/import-albums/",
       success: function (import_status) {
-          $("#status-report").html(import_status);
+        $("#status-report").html(import_status);
       }
     });
   });  
