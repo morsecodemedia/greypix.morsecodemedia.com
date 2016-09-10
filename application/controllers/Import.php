@@ -262,5 +262,25 @@ class Import extends CI_Controller {
     // the picture sizes
     // the picutre-sizes lookup
 	}
+  
+  /**
+   *
+   * Build Template
+   *
+   * @param array $payload
+   *
+  **/
+  private function build_template($payload=null)
+  {
+    // Navigation Includes
+    $this->data["navigation"] = $this->load->view('global/navigation', '', true);
+    
+    $template_array = (object)array(
+      'header' => $this->load->view('global/header', $this->data, true),
+      'footer' => $this->load->view('global/footer', $this->data, true)
+    );
 
+    return $template_array;
+  }
+  
 }
