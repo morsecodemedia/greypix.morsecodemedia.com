@@ -32,12 +32,10 @@ class Import extends CI_Controller {
 	
 	public function index()
 	{
-	  // TO DO:
-  	// create page that has 3 buttons
-  	// 1 button to update the albums
-  	// 1 button to update the photos
-  	// 1 button to update both
-  	$this->import_albums(true);
+
+  	//$this->import_albums();
+  	$this->load->view('pages/import', $this->build_template());
+  	
 	}
 	
 	public function authenticate_app()
@@ -206,6 +204,7 @@ class Import extends CI_Controller {
     
     $msg = "";
     $newPhotos = 0;
+    $updatedPhotos = 0;
     $deletedPhotos = 0;
     
     // loop through the photos
@@ -235,12 +234,20 @@ class Import extends CI_Controller {
                           
           $this->gpdb->insertIntoDB($lookupPayload, "pictures_sizes_lookup");
         }
+      } else {
+        // the photo already exists - let's check if it has been updated
+        if ($this->dateObj->setTimestamp($photo['lastupdate'])->format('Y-m-d H:i:s') > $photoExists[0]->lastupdate) {
+          // update record
+          $this->gpdb->insertIntoDB($payload, "pictures", $photo['id']);
+          $updatedPhotos++;
+        }
       }
       
     }
     
     // output message
     $msg .= "<p>$newPhotos pictures added.</p>";
+    $msg .= "<p>$updatedPhotos pictures updated.</p>";
     $msg .= "<p>$deletedPhotos pictures deleted.</p>";
     
     return $msg;

@@ -614,6 +614,20 @@ function initgalheight() {
         height: $(".p_horizontal_wrap").outerHeight(true) - d
     });
 }
+function importSubmit() {
+
+  $("#import-script").on("click", function() {
+    $.ajax({
+      type: "POST",
+      url: "/import/import-albums/";
+      cache: false
+      success: function (import_status) {
+          $("#status-report").html(import_status);
+      }
+    });
+  });  
+
+}
 //   Init all fucntions  ------------------
 $(document).ready(function() {
     initOutdoor();
