@@ -13,10 +13,10 @@
                 <h2>Import Photos from Flickr</h2>
                 <div id="contact-form">
                     <div id="status-report"></div>
-                    <a href="#" id="import-script" class="btn anim-button trans-btn transition text-center">
+                    <button id="import-script" class="btn anim-button trans-btn transition text-center">
                       <span>Import Pictures</span>
                       <i class="fa fa-cloud-download"></i>
-                    </a>
+                    </button>
                     <div id="import-loader" class="hide">
                       <span class="arrows st"></span>
                       <span class="arrows nd"></span>
