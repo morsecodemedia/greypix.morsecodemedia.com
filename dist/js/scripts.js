@@ -620,6 +620,7 @@ function importSubmit() {
     $.ajax({
       type: "POST",
       url: "/import/import-albums/",
+      dataType: "jsonp",
       cache: false,
       beforeSend: function(){
         $("#import-loader").show();
