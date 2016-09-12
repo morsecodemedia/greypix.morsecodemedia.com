@@ -236,7 +236,7 @@ class Import extends CI_Controller {
           $this->gpdb->insertIntoDB($lookupPayload, "pictures_sizes_lookup");
         }
       } else {
-        echo "<pre>"; print_r($photo); echo "</pre>";exit;
+        echo "<pre>"; print_r($photoExists); echo "</pre>";exit;
         // the photo already exists - let's check if it has been updated
         if ($this->dateObj->setTimestamp($photo['dates']['lastupdate'])->format('Y-m-d H:i:s') > $photoExists[0]->lastupdate) {
           // update record
