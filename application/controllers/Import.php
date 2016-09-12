@@ -32,8 +32,7 @@ class Import extends CI_Controller {
 	
 	public function index()
 	{
-
-  	//$this->import_albums();
+	
   	$this->load->view('pages/import', $this->build_template());
   	
 	}
@@ -131,7 +130,9 @@ class Import extends CI_Controller {
     $msg .= "<p>$deletedAlbums albums deleted.</p>";
     $msg .= (isset($pictureLog)) ? $pictureLog : "";
     
-    return $msg;
+    $this->data['message'] = $msg;
+    
+    $this->load->view('pages/import', $this->build_template());
     
 	}
 		

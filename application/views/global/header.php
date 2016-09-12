@@ -12,7 +12,6 @@
         <link type="text/css" rel="stylesheet" href="/dist/css/reset.css">
         <link type="text/css" rel="stylesheet" href="/dist/css/plugins.css">
         <link type="text/css" rel="stylesheet" href="/dist/css/style.css">
-        <link type="text/css" rel="stylesheet" href="/dist/css/yourstyle.css">
         <!--=============== favicons ===============-->
         <link rel="shortcut icon" href="/dist/images/favicon.ico">
     </head>

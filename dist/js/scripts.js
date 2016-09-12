@@ -614,31 +614,8 @@ function initgalheight() {
         height: $(".p_horizontal_wrap").outerHeight(true) - d
     });
 }
-function importSubmit() {
-
-  $("#import-script").on("click", function() {
-    $.ajax({
-      url: "https://greypix.morsecodemedia.com/import/import-albums/",
-      dataType: "html",
-      cache: false,
-      crossDomain: true,
-      
-      beforeSend: function(){
-        $("#import-loader").show();
-      },
-      success: function(import_status) {
-        $("#status-report").html(import_status);
-      },
-      complete: function() {
-        $("#import-loader").hide();  
-      }
-    });
-  });  
-
-}
 //   Init all fucntions  ------------------
 $(document).ready(function() {
     initOutdoor();
     initparallax();
-    importSubmit();
 });
