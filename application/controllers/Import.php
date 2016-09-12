@@ -237,7 +237,7 @@ class Import extends CI_Controller {
         }
       } else {
         // the photo already exists - let's check if it has been updated
-        if ($this->dateObj->setTimestamp($photoDetailsPayload['lastupdate'])->format('Y-m-d H:i:s') > $photoExists[0]->lastupdate) {
+        if ($photoDetailsPayload['lastupdate'] > $photoExists[0]->lastupdate) {
           // update record
           $this->gpdb->insertIntoDB($payload, "pictures", $photo['id']);
           $updatedPhotos++;
