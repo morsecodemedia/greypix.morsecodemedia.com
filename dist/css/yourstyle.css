@@ -124,12 +124,6 @@ span:nth-child(7) {
   backface-visibility: hidden;
 }
 
-html, body {
-  background-color: #141517;
-  height: 100%;
-  margin: 0;
-}
-
 .loading {
   display: block;
   font: normal 22px/1em "FuturaPT-Books", sans-serif;
