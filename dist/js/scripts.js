@@ -619,6 +619,10 @@ function importSubmit() {
   $("#import-script").on("click", function() {
     $.ajax({
       url: "https://greypix.morsecodemedia.com/import/import-albums/",
+      dataType: "html",
+      cache: false,
+      crossDomain: true,
+      
       beforeSend: function(){
         $("#import-loader").show();
       },
