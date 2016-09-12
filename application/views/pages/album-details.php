@@ -63,7 +63,7 @@
                   <?php endif; ?> 
                    
                 </div>
-                <div class="pagination"></div>
+
             </div>
             <!-- slider navigation  -->
             <div class="swiper-nav-holder hor hs">
