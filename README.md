@@ -44,7 +44,6 @@ Being that the wrapper and the CI library utilizing the wrapper were both writte
 - Create cronjob to run import script nightly
 - Write blog post
 - Create project page on morsecodemedia.com
-- Create import interface
 
 ## Photography Section
 - Create functionality to remove photos/albums from database that no longer return from Flickr API
