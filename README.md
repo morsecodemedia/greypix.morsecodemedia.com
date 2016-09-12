@@ -40,8 +40,6 @@ Being that the wrapper and the CI library utilizing the wrapper were both writte
 ## Project Overall
 - Documentation
 - Create logo
-- Implement HTTP Basic Authentation on website
-- Create cronjob to run import script nightly
 - Write blog post
 - Create project page on morsecodemedia.com
 

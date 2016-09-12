@@ -4,6 +4,11 @@ AddType image/svg+xml .svg
 AddType application/vnd.ms-fontobject .eot
 AddDefaultCharset UTF-8
 
+AuthName "Protected Site"
+AuthType Basic
+AuthUserFile /home/mcmuser/config/greypix.morsecodemedia.com/.htpasswd
+Require valid-user
+
 <IfModule mod_rewrite.c>
 	RewriteEngine On
 	RewriteBase /
