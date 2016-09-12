@@ -620,8 +620,15 @@ function importSubmit() {
     $.ajax({
       type: "POST",
       url: "/import/import-albums/",
-      success: function (import_status) {
+      cache: false,
+      beforeSend: function(){
+        $("#import-loader").show();
+      },
+      success: function(import_status) {
         $("#status-report").html(import_status);
+      },
+      complete: function() {
+        $("#import-loader").hide();  
       }
     });
   });  
@@ -631,4 +638,5 @@ function importSubmit() {
 $(document).ready(function() {
     initOutdoor();
     initparallax();
+    importSubmit();
 });
