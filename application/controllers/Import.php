@@ -125,9 +125,9 @@ class Import extends CI_Controller {
     }
     
     // output message
-    $msg .= "<p>$newAlbums albums added.</p>";
-    $msg .= "<p>$updatedAlbums albums updated.</p>";
-    $msg .= "<p>$deletedAlbums albums deleted.</p>";
+    $msg .= ($newAlbums == 1) ? "<p>$newAlbums album added.</p>" : "<p>$newAlbums albums added.</p>";
+    $msg .= ($updatedAlbums == 1) ? "<p>$updatedAlbums album updated.</p>" : "<p>$updatedAlbums albums updated.</p>";
+    $msg .= ($deletedAlbums == 1) ? "<p>$deletedAlbums album deleted.</p>" : "<p>$deletedAlbums albums deleted.</p>";
     $msg .= (isset($pictureLog)) ? $pictureLog : "";
     
     $this->data['message'] = $msg;
@@ -237,7 +237,7 @@ class Import extends CI_Controller {
         }
       } else {
         // the photo already exists - let's check if it has been updated
-        if ($this->dateObj->setTimestamp($photo['lastupdate'])->format('Y-m-d H:i:s') > $photoExists[0]->lastupdate) {
+        if ($this->dateObj->setTimestamp($photo['dates']['lastupdate'])->format('Y-m-d H:i:s') > $photoExists[0]->lastupdate) {
           // update record
           $this->gpdb->insertIntoDB($payload, "pictures", $photo['id']);
           $updatedPhotos++;
@@ -247,9 +247,9 @@ class Import extends CI_Controller {
     }
     
     // output message
-    $msg .= "<p>$newPhotos pictures added.</p>";
-    $msg .= "<p>$updatedPhotos pictures updated.</p>";
-    $msg .= "<p>$deletedPhotos pictures deleted.</p>";
+    $msg .= ($newPhotos == 1) ? "<p>$newPhotos picture added.</p>" : "<p>$newPhotos pictures added.</p>";
+    $msg .= ($updatedPhotos == 1) ? "<p>$updatedPhotos picture updated.</p>" : "<p>$updatedPhotos pictures updated.</p>";
+    $msg .= ($deletedPhotos == 1) ? "<p>$deletedPhotos picture deleted.</p>" : "<p>$deletedPhotos pictures deleted.</p>";
     
     return $msg;
     
