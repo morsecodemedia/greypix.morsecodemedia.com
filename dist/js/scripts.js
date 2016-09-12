@@ -63,7 +63,8 @@ function initOutdoor() {
         mode: "horizontal",
         pagination: ".pagination",
         paginationClickable: true,
-        autoplay: ec
+        autoplay: ec,
+        lazyLoad: true
     });
     $(".hor a.arrow-left").on("click", function(a) {
         a.preventDefault();
