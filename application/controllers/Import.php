@@ -9,6 +9,7 @@ class Import extends CI_Controller {
 	  parent::__construct();
 	  
 	  // Set a different basic authentication for this controller only
+/*
 	  if (!isset($_SERVER['PHP_AUTH_USER']) || 
 	      $_SERVER['PHP_AUTH_USER'] != $this->config->item('admin_username') || 
 	      $_SERVER['PHP_AUTH_PW'] != $this->config->item('admin_password')) {
@@ -16,6 +17,7 @@ class Import extends CI_Controller {
           header('HTTP/1.0 401 Unauthorized');
           die('Access Denied');
     }
+*/
 	  
 	  // DateTime object
 	  $this->dateObj = new DateTime();
