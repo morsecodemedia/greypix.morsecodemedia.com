@@ -227,18 +227,12 @@ class Import extends CI_Controller {
         
         $photoSizePayload = $this->getPhotoSizesByID($photo['id']);
         // loop through sizes
+        
+        echo "<pre>"; print_r($photoSizePayload); echo "</pre>";exit;
         foreach ($photoSizePayload as $size) {
           // insert sizes into database
           $this->gpdb->insertIntoDB($size, "picture_sizes");
-          $sizeID = $this->db->insert_id();
           
-          // ! TODO: Get rid of the pictures_sizes_lookup and add the picture_id to the sizes table  
-          // create lookup record between photo and size
-          $lookupPayload = array("picture_id" => $photo['id'],
-                                 "size_id"    => $sizeID
-                                );
-                          
-          $this->gpdb->insertIntoDB($lookupPayload, "pictures_sizes_lookup");
         }
       } else {
         // the photo already exists - let's check if it has been updated
