@@ -228,8 +228,10 @@ class Import extends CI_Controller {
         $photoSizePayload = $this->getPhotoSizesByID($photo['id']);
         // loop through sizes
         
-        echo "<pre>"; print_r($photoSizePayload); echo "</pre>";exit;
         foreach ($photoSizePayload as $size) {
+          // add picture id to the payload
+          $size['picture_id'] = $photo['id'];
+                  echo "<pre>"; print_r($size); echo "</pre>";exit;
           // insert sizes into database
           $this->gpdb->insertIntoDB($size, "picture_sizes");
           
