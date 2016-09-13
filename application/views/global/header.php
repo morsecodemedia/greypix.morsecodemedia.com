@@ -3,7 +3,7 @@
     <head>
         <!--=============== basic  ===============-->
         <meta charset="UTF-8">
-        <title>GreyPix - A MorseCodeMedia Project</title>
+        <title>GreyPix | The Life of Greyson George: A photo and video documentary.</title>
         <meta name="description" content="A collection of photographs of my first born. Created for the grandparents to see pictures, but remove the ability to have them blast them over social media, in excess and without concern of security."/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <meta name="robots" content="noindex, nofollow"/>
@@ -27,7 +27,7 @@
                 <div class="header-inner">
                     <!-- Logo  -->
                     <div class="logo-holder">
-                        <a href="/"><!-- <img src="/dist/images/logo.png" alt=""> --><img src="https://placeholdit.imgix.net/~text?txtsize=16&txt=150%C3%9775&w=150&h=75" /></a>
+                        <a href="/"><img src="/dist/images/logo.png" alt="GreyPix Logo"></a>
                     </div>
                     <!--Logo end  -->
                     <!--Navigation  -->
