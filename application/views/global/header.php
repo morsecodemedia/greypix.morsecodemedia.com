@@ -43,7 +43,7 @@
                 <div class="header-inner">
                     <!-- Logo  -->
                     <div class="logo-holder">
-                        <a href="/"><img src="/dist/images/logo.png" alt="GreyPix Logo"></a>
+                        <a href="/"><img src="/dist/images/logo-2x.png" alt="GreyPix Logo"></a>
                     </div>
                     <!--Logo end  -->
                     <!--Navigation  -->
