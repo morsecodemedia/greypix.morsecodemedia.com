@@ -19,7 +19,7 @@ class Home extends CI_Controller {
 	    header('HTTP/1.1 503 Service Temporarily Unavailable');
 	    header('Status: 503 Server Temporarily Unavailable');
 	    header('Retry-After: 3600');
-  	  $this->load->view('errors/mainenance', $this->build_template());
+  	  $this->load->view('errors/maintenance', $this->build_template());
 	  }
 	  
 	}  
