@@ -18,3 +18,6 @@ $config['flickr_token'] = NULL;
 /* GreyPix API Admin */
 $config['admin_username'] = "";
 $config['admin_password'] = "";
+
+/* Maintenance Mode */
+$config['maintenance_mode'] = FALSE;

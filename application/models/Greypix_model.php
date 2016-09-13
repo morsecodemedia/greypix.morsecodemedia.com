@@ -149,6 +149,23 @@ class Greypix_model extends CI_Model {
   
   /**
    *
+   * isPictureInAlbum
+   *
+   * Check to see if there is an association between a picture and an album
+   *
+   * @param array $payload
+   *
+  **/
+  public function isPictureInAlbum($payload=array())
+  {
+    $picture = $this->db->get_where("albums_pictures_lookup", $payload);
+    
+    return $picture->result();
+    
+  }
+  
+  /**
+   *
    * Get Randomized Resultset - Limited by Number
    * Set up for method chaining
    * 

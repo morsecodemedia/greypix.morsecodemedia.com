@@ -14,6 +14,14 @@ class Home extends CI_Controller {
 	  // Load models
 	  $this->load->model('Greypix_model', 'gpdb');
 	  
+	  // Check if the site is under maintenance
+	  if ( $this->config-item("maintenance_mode") ) {
+	    header('HTTP/1.1 503 Service Temporarily Unavailable');
+	    header('Status: 503 Server Temporarily Unavailable');
+	    header('Retry-After: 3600');
+  	  $this->load->view('errors/mainenance', $this->build_template());
+	  }
+	  
 	}  
 
 	public function index()

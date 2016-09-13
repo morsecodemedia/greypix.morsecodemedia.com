@@ -44,6 +44,8 @@ Being that the wrapper and the CI library utilizing the wrapper were both writte
 - Create project page on morsecodemedia.com
 
 ## Photography Section
+
+- Update the database scheme - there doesn't need to be a picture_sizes_lookup. This will require rewriting a large portion of the import and the rendering functionality - however, reducing the amount of database calls should help the speed issue.
 - Create functionality to remove photos/albums from database that no longer return from Flickr API
 - Implement tagging on albums
 	- Create filtering functionality

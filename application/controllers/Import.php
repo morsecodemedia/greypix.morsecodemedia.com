@@ -116,7 +116,11 @@ class Import extends CI_Controller {
             $payload = array("album_id"   => $album['id'],
                              "picture_id" =>  $photo['id']
                             );
-            $this->gpdb->insertIntoDB($payload, "albums_pictures_lookup");
+            // check if lookup exists, if not then enter it into the database.
+            $lookupExists = $this->gpdb->isPictureInAlbum($payload);
+            if (!$lookupExists) {
+              $this->gpdb->insertIntoDB($payload, "albums_pictures_lookup");
+            }                
           }
         }
  
@@ -227,7 +231,8 @@ class Import extends CI_Controller {
           // insert sizes into database
           $this->gpdb->insertIntoDB($size, "picture_sizes");
           $sizeID = $this->db->insert_id();
-            
+          
+          // ! TODO: Get rid of the pictures_sizes_lookup and add the picture_id to the sizes table  
           // create lookup record between photo and size
           $lookupPayload = array("picture_id" => $photo['id'],
                                  "size_id"    => $sizeID
@@ -238,8 +243,9 @@ class Import extends CI_Controller {
       } else {
         // the photo already exists - let's check if it has been updated
         if ($photoDetailsPayload['lastupdate'] > $photoExists[0]->lastupdate) {
-          // update record
+          // update picture record
           $this->gpdb->insertIntoDB($photoDetailsPayload, "pictures", $photo['id']);
+          // ! TODO: update picture sizes
           $updatedPhotos++;
         }
       }
