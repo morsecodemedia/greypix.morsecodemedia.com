@@ -229,9 +229,8 @@ class Import extends CI_Controller {
         // loop through sizes
         
         foreach ($photoSizePayload as $size) {
-          // add picture id to the payload
+          // add picture id to the size payload
           $size['picture_id'] = $photo['id'];
-                  echo "<pre>"; print_r($size); echo "</pre>";exit;
           // insert sizes into database
           $this->gpdb->insertIntoDB($size, "picture_sizes");
           
@@ -242,6 +241,8 @@ class Import extends CI_Controller {
           // update picture record
           $this->gpdb->insertIntoDB($photoDetailsPayload, "pictures", $photo['id']);
           // ! TODO: update picture sizes
+          // - blow out all records by photo id
+          // - add new records
           $updatedPhotos++;
         }
       }
@@ -259,11 +260,10 @@ class Import extends CI_Controller {
   
   private function removePictures($pictures)
 	{
-    // TO DO
+    // ! TODO: removePictures
     // Removal of pictures in database that no longer are in Flickr (via API)	
     // the picture 
     // the picture sizes
-    // the picutre-sizes lookup
 	}
   
   /**
