@@ -37,9 +37,7 @@
                       <div class="overlay"></div>
                       <div class="hero-slider <?php echo ($i==1) ? "synkslider" : ""; ?> owl-carousel" data-attime="3220" data-rtlt="false">
             <?php endif; ?>
-                        <div class="item">
-                          <div class="bg" data-src="<?php echo (isset($rp->lg1600_size)) ? $rp->lg1600_size : $rp->orig_size; ?>"></div>
-                        </div>
+                        <div class="item bg" data-src="<?php echo (isset($rp->lg1600_size)) ? $rp->lg1600_size : $rp->orig_size; ?>"></div>
             <?php if ($i%3 == 0) : ?>
                       </div>
                     </div>
