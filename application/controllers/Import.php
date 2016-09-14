@@ -235,7 +235,8 @@ class Import extends CI_Controller {
             $size['picture_id'] = $photo['id'];
                       
             // strip the stuff we don't care about storing in the database
-            unset($size['source']);
+            unset($size['url']);
+            unset($size['media']);
             
             // insert sizes into database
             $this->gpdb->insertIntoDB($size, "picture_sizes");  
