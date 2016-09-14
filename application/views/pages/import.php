@@ -19,7 +19,7 @@
                       </a>
                     <?php else : ?>
                       <div id="status-report" class="text-center;">
-                        <?php echo $message; ?>
+                        <?php echo "<pre>"; print_r($message); echo "</pre>"; ?>
                       </div>
                     <?php endif; ?>
                 </div>

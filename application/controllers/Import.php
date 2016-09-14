@@ -27,7 +27,13 @@ class Import extends CI_Controller {
     $this->newPhotos      = 0;
     $this->updatedPhotos  = 0;
     $this->deletedPhotos  = 0;
-    $this->msg            = "";
+    $this->msg            = array("newAlbums"     => 0,
+                                  "updatedAlbums" => 0,
+                                  "deletedAlbums" => 0,
+                                  "newPhotos"     => 0,
+                                  "updatedPhotos" => 0,
+                                  "deletedPhotos" => 0
+                                 );
     
 	  
 	  // Load library
@@ -133,10 +139,9 @@ class Import extends CI_Controller {
     }
     
     // output message
-    $this->msg .= ($this->newAlbums == 1) ? "<p>$this->newAlbums album added.</p>" : "<p>$this->newAlbums albums added.</p>";
-    $this->msg .= ($this->updatedAlbums == 1) ? "<p>$this->updatedAlbums album updated.</p>" : "<p>$this->updatedAlbums albums updated.</p>";
-    $this->msg .= ($this->deletedAlbums == 1) ? "<p>$this->deletedAlbums album deleted.</p>" : "<p>$this->deletedAlbums albums deleted.</p>";
-    $this->msg .= (isset($pictureLog)) ? $pictureLog : "";
+    $this->msg['newAlbums'] += $this->newAlbums;
+    $this->msg['updatedAlbums'] += $this->updatedAlbums;
+    $this->msg['deletedAlbums'] += $this->deletedAlbums;
     
     $this->data['message'] = $this->msg;
     
@@ -257,11 +262,11 @@ class Import extends CI_Controller {
     }
     
     // output message
-    $this->msg .= ($this->newPhotos == 1) ? "<p>$this->newPhotos picture added.</p>" : "<p>$this->newPhotos pictures added.</p>";
-    $this->msg .= ($this->updatedPhotos == 1) ? "<p>$this->updatedPhotos picture updated.</p>" : "<p>$this->updatedPhotos pictures updated.</p>";
-    $this->msg .= ($this->deletedPhotos == 1) ? "<p>$this->deletedPhotos picture deleted.</p>" : "<p>$this->deletedPhotos pictures deleted.</p>";
+    $this->msg['newPhotos'] += $this->newPhotos;
+    $this->msg['updatedPhotos'] += $this->updatedPhotos;
+    $this->msg['deletedPhotos'] += $this->deletedPhotos;
     
-    return $this->msg;
+    return true;
     
   }
   
