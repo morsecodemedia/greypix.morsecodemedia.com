@@ -19,8 +19,16 @@ class Import extends CI_Controller {
     }
 */
 	  
-	  // DateTime object
-	  $this->dateObj = new DateTime();
+    // Set some variables
+	  $this->dateObj        = new DateTime();
+    $this->newAlbums      = 0;
+    $this->updatedAlbums  = 0;
+    $this->deletedAlbums  = 0;
+    $this->newPhotos      = 0;
+    $this->updatedPhotos  = 0;
+    $this->deletedPhotos  = 0;
+    $this->msg            = "";
+    
 	  
 	  // Load library
 	  $this->load->library('flickr');
@@ -69,10 +77,6 @@ class Import extends CI_Controller {
     $frob           = $this->flickr->f->auth();
     $token          = $this->flickr->f->auth_checkToken();  
     $albums         = $this->getAllAlbums();
-    $newAlbums      = 0;
-    $updatedAlbums  = 0;
-    $deletedAlbums  = 0;
-    $msg            = "";
     
     if ($albums) {
       
@@ -94,13 +98,13 @@ class Import extends CI_Controller {
         if (!$albumExists) {
           // insert album into database
           $this->gpdb->insertIntoDB($payload, "albums");  
-          $newAlbums++;
+          $this->newAlbums++;
         } else {
           // check if up-to-date
           if ($this->dateObj->setTimestamp($album['date_update'])->format('Y-m-d H:i:s') > $albumExists[0]->date_update) {
             // update record
             $this->gpdb->insertIntoDB($payload, "albums", $album['id']);
-            $updatedAlbums++;
+            $this->updatedAlbums++;
           }
         }
         
@@ -129,12 +133,12 @@ class Import extends CI_Controller {
     }
     
     // output message
-    $msg .= ($newAlbums == 1) ? "<p>$newAlbums album added.</p>" : "<p>$newAlbums albums added.</p>";
-    $msg .= ($updatedAlbums == 1) ? "<p>$updatedAlbums album updated.</p>" : "<p>$updatedAlbums albums updated.</p>";
-    $msg .= ($deletedAlbums == 1) ? "<p>$deletedAlbums album deleted.</p>" : "<p>$deletedAlbums albums deleted.</p>";
-    $msg .= (isset($pictureLog)) ? $pictureLog : "";
+    $this->msg .= ($this->newAlbums == 1) ? "<p>$this->newAlbums album added.</p>" : "<p>$this->newAlbums albums added.</p>";
+    $this->msg .= ($this->updatedAlbums == 1) ? "<p>$this->updatedAlbums album updated.</p>" : "<p>$this->updatedAlbums albums updated.</p>";
+    $this->msg .= ($this->deletedAlbums == 1) ? "<p>$this->deletedAlbums album deleted.</p>" : "<p>$this->deletedAlbums albums deleted.</p>";
+    $this->msg .= (isset($pictureLog)) ? $pictureLog : "";
     
-    $this->data['message'] = $msg;
+    $this->data['message'] = $this->msg;
     
     $this->load->view('pages/import', $this->build_template());
     
@@ -207,11 +211,6 @@ class Import extends CI_Controller {
       return false;
     }
     
-    $msg = "";
-    $newPhotos = 0;
-    $updatedPhotos = 0;
-    $deletedPhotos = 0;
-    
     // loop through the photos
     foreach ($photos['photoset']['photo'] as $photo) {
       // get photo details
@@ -223,14 +222,14 @@ class Import extends CI_Controller {
       if (!$photoExists) {
         // insert photo into database
         $this->gpdb->insertIntoDB($photoDetailsPayload, "pictures");
-        $newPhotos++;
+        $this->newPhotos++;
         
         $photoSizePayload = $this->getPhotoSizesByID($photo['id']);
         // loop through sizes
         
         foreach ($photoSizePayload as $size) {
           // We only care about 2 sizes, let's skip over all the others          
-          if ($size['label'] !== "Original" || $size['label'] !== "Large 1600") {
+          if ($size['label'] == "Original" || $size['label'] == "Large 1600") {
             // add picture id to the size payload
             $size['picture_id'] = $photo['id'];
                       
@@ -251,18 +250,18 @@ class Import extends CI_Controller {
           // ! TODO: update picture sizes
           // - blow out all records by photo id
           // - add new records
-          $updatedPhotos++;
+          $this->updatedPhotos++;
         }
       }
       
     }
     
     // output message
-    $msg .= ($newPhotos == 1) ? "<p>$newPhotos picture added.</p>" : "<p>$newPhotos pictures added.</p>";
-    $msg .= ($updatedPhotos == 1) ? "<p>$updatedPhotos picture updated.</p>" : "<p>$updatedPhotos pictures updated.</p>";
-    $msg .= ($deletedPhotos == 1) ? "<p>$deletedPhotos picture deleted.</p>" : "<p>$deletedPhotos pictures deleted.</p>";
+    $this->msg .= ($this->newPhotos == 1) ? "<p>$this->newPhotos picture added.</p>" : "<p>$this->newPhotos pictures added.</p>";
+    $this->msg .= ($this->updatedPhotos == 1) ? "<p>$this->updatedPhotos picture updated.</p>" : "<p>$this->updatedPhotos pictures updated.</p>";
+    $this->msg .= ($this->deletedPhotos == 1) ? "<p>$this->deletedPhotos picture deleted.</p>" : "<p>$this->deletedPhotos pictures deleted.</p>";
     
-    return $msg;
+    return $this->msg;
     
   }
   
