@@ -139,9 +139,12 @@ class Import extends CI_Controller {
     }
     
     // output message
-    $this->msg['newAlbums'] += $this->newAlbums;
+    $this->msg['newAlbums']     += $this->newAlbums;
     $this->msg['updatedAlbums'] += $this->updatedAlbums;
     $this->msg['deletedAlbums'] += $this->deletedAlbums;
+    $this->msg['newPhotos']     += $this->newPhotos;
+    $this->msg['updatedPhotos'] += $this->updatedPhotos;
+    $this->msg['deletedPhotos'] += $this->deletedPhotos;
     
     $this->data['message'] = $this->msg;
     
@@ -230,8 +233,7 @@ class Import extends CI_Controller {
         $this->newPhotos++;
         
         $photoSizePayload = $this->getPhotoSizesByID($photo['id']);
-        // loop through sizes
-        
+        // loop through sizes    
         foreach ($photoSizePayload as $size) {
           // We only care about 2 sizes, let's skip over all the others          
           if ($size['label'] == "Original" || $size['label'] == "Large 1600") {
@@ -260,11 +262,6 @@ class Import extends CI_Controller {
       }
       
     }
-    
-    // output message
-    $this->msg['newPhotos'] += $this->newPhotos;
-    $this->msg['updatedPhotos'] += $this->updatedPhotos;
-    $this->msg['deletedPhotos'] += $this->deletedPhotos;
     
     return true;
     
