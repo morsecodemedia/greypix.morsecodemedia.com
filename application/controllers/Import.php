@@ -231,18 +231,9 @@ class Import extends CI_Controller {
         foreach ($photoSizePayload as $size) {
           // add picture id to the size payload
           $size['picture_id'] = $photo['id'];
-          
-          // convert the raw images into base64 and add it to the size payload
-          $image = $size['source'];
-          $type = pathinfo($image, PATHINFO_EXTENSION);
-          $data = file_get_contents($image);
-          $dataUri = 'data:image/' . $type . ';base64,' . base64_encode($data);
-          $size['data_uri'] = $dataUri;
-          
+                    
           // strip the stuff we don't care about storing in the database
           unset($size['source']);
-          unset($size['url']);
-          unset($size['media']);
           
           // insert sizes into database
           $this->gpdb->insertIntoDB($size, "picture_sizes");
