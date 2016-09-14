@@ -145,6 +145,7 @@ function initOutdoor() {
             items: 1,
             loop: true,
             margin: 0,
+            lazyLoad: true,
             autoplay: true,
             autoplayTimeout: auttime,
             autoplayHoverPause: false,
