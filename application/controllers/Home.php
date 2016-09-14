@@ -29,6 +29,8 @@ class Home extends CI_Controller {
 	  
 	  $randPix = $this->gpdb->getRandomPicturesLimitedBy(12);
     
+    echo "<pre>"; print_r($randPix); echo "</pre>";exit;
+    
     if ($randPix) {
       foreach ($randPix as $rp) {
         

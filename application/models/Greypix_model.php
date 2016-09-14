@@ -177,6 +177,7 @@ class Greypix_model extends CI_Model {
     $seed = RAND();
     $this->db->select("*");
     $this->db->from("pictures");
+    $this->db->join("picture_sizes", "picture_sizes.picture_id = pictures.id", "LEFT");
     $this->db->order_by($seed, 'RANDOM');
     $this->db->limit($howMany);
     $pictures = $this->db->get();

@@ -229,14 +229,17 @@ class Import extends CI_Controller {
         // loop through sizes
         
         foreach ($photoSizePayload as $size) {
-          // add picture id to the size payload
-          $size['picture_id'] = $photo['id'];
-                    
-          // strip the stuff we don't care about storing in the database
-          unset($size['source']);
-          
-          // insert sizes into database
-          $this->gpdb->insertIntoDB($size, "picture_sizes");
+          // We only care about 2 sizes, let's skip over all the others          
+          if ($size['label'] !== "Original" || $size['label'] !== "Large 1600") {
+            // add picture id to the size payload
+            $size['picture_id'] = $photo['id'];
+                      
+            // strip the stuff we don't care about storing in the database
+            unset($size['source']);
+            
+            // insert sizes into database
+            $this->gpdb->insertIntoDB($size, "picture_sizes");  
+          }
           
         }
       } else {
