@@ -113,12 +113,17 @@ class Greypix_model extends CI_Model {
   **/
   public function getPictureByID($photoID)
   {
-  
+    
+    if (!$photoID) {
+      return false;
+    }
+    
     $this->db->cache_on();
     $this->db->select("*");
     $this->db->from("pictures");
     $this->db->where(array("id" => $photoID));
-    $photo = $this->db->limit(1);
+    $this->db->limit(1);
+    $photo = $this->db->get();
     
     return $photo->result();
     
