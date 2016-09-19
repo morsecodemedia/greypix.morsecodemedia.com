@@ -44,7 +44,8 @@ class Greypix_model extends CI_Model {
   **/
   public function getAlbumByID($albumID)
   {
-  
+    
+    $this->db->cache_on();
     $album = $this->db->get_where("albums", array("id" => $albumID));
     
     return $album->result();
@@ -59,6 +60,7 @@ class Greypix_model extends CI_Model {
   public function getAllAlbums()
   {
     
+    $this->db->cache_on();
     $albums = $this->db->get("albums");
     
     return $albums->result();
@@ -72,6 +74,8 @@ class Greypix_model extends CI_Model {
   **/
   public function getAllAlbumsDesc()
   {
+  
+    $this->db->cache_on();
     $this->db->select("*");
     $this->db->from("albums");
     $this->db->order_by("albums.date_create", "DESC");
@@ -92,7 +96,8 @@ class Greypix_model extends CI_Model {
   **/
   public function getAllPicturesByAlbumID($albumID)
   {
-    
+  
+    $this->db->cache_on();
     $pictures = $this->db->get_where("albums_pictures_lookup", array("album_id" => $albumID));
     
     return $pictures->result();
@@ -109,6 +114,7 @@ class Greypix_model extends CI_Model {
   public function getPictureByID($photoID)
   {
   
+    $this->db->cache_on();
     $photo = $this->db->get_where("pictures", array("id" => $photoID));
     
     return $photo->result();
@@ -122,7 +128,8 @@ class Greypix_model extends CI_Model {
   **/
   public function getAllPictures()
   {
-
+  
+    $this->db->cache_on();
     $pictures = $this->db->get("pictures");
 
     return $pictures->result();
@@ -136,7 +143,8 @@ class Greypix_model extends CI_Model {
   **/
   public function getAllPicturesWithDetails()
   {
-    
+  
+    $this->db->cache_on();
     $this->db->select("*");
     $this->db->from("pictures");
     $this->db->join("picture_sizes", "picture_sizes.picture_id = pictures.id", "LEFT");
@@ -173,7 +181,8 @@ class Greypix_model extends CI_Model {
   **/ 
   public function getRandomPicturesLimitedBy($howMany)
   {
-  
+    
+    $this->db->cache_on();
     $seed = RAND();
     $this->db->select("*");
     $this->db->distinct();
@@ -196,6 +205,7 @@ class Greypix_model extends CI_Model {
   public function getSizesByPictureID($pictureID)
   {
     
+    $this->db->cache_on();
     $this->db->select("*");
     $this->db->from("pictures");
     $this->db->join("picture_sizes", "picture_sizes.picture_id = pictures.id", "LEFT");
@@ -216,6 +226,7 @@ class Greypix_model extends CI_Model {
   **/
   public function getSpecificSizeOfPictureID($label=string, $pictureID)
   {
+    $this->db->cache_on();
     $this->db->select("*");
     $this->db->from("pictures");
     $this->db->join("picture_sizes", "picture_sizes.picture_id = pictures.id", "LEFT");

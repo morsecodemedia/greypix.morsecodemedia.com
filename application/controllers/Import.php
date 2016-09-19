@@ -138,6 +138,8 @@ class Import extends CI_Controller {
             
     }
     
+    $this->db->cache_delete_all();
+    
     // output message
     $this->msg['newAlbums']     += $this->newAlbums;
     $this->msg['updatedAlbums'] += $this->updatedAlbums;
