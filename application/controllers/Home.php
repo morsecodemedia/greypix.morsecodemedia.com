@@ -41,6 +41,8 @@ class Home extends CI_Controller {
       }  
     }
 	  
+	  echo "<pre>"; print_r($randPix); echo "</pre>";exit;
+	  
 	  $this->data['randPix'] = $randPix;
 	  
 		$this->load->view('pages/home', $this->build_template());
