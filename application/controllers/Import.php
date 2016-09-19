@@ -146,6 +146,7 @@ class Import extends CI_Controller {
     $this->msg['newPhotos']     += $this->newPhotos;
     $this->msg['updatedPhotos'] += $this->updatedPhotos;
     $this->msg['deletedPhotos'] += $this->deletedPhotos;
+    $this->msg['executionTime'] += (microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"])/60;
     
     $this->data['message'] = $this->msg;
     
