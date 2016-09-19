@@ -46,7 +46,7 @@
         <!--description column end -->
         <!-- portfolio  Images  -->                                        
         <div class="resize-carousel-holder vis-info">
-            <div class="portfolio_horizontal_container viom" id="horizontal-slider" data-mwc="1" data-mwa="0">
+            <div class="swiper-container viom" id="horizontal-slider" data-mwc="1" data-mwa="0">
                 <div class="swiper-wrapper">
                   <?php if (!empty($album[0]->photoset)) : ?>
                     <?php foreach ($album[0]->photoset as $photo) : ?>
