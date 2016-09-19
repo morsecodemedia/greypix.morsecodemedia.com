@@ -3,10 +3,6 @@
 <div class="content-holder elem scale-bg2 transition3 slid-hol">
     <!--page title -->
     <div class="fixed-title"><span><?php echo $album[0]->title; ?></span></div>
-      <div class="count-folio">
-          <div class="num-album"></div>
-          <div class="all-album"></div>
-      </div>    
     <!--page title end -->
     <!--=============== content ===============-->
     <div class="content full-height">
@@ -70,12 +66,10 @@
                 <div class="pagination hide"></div>
             </div>
             <!-- slider navigation  -->
-<!--
             <div class="swiper-nav-holder hor hs">
                 <a class="swiper-nav arrow-left transition " href="#"><i class="fa fa-angle-left"></i></a>
                 <a class="swiper-nav  arrow-right transition" href="#"><i class="fa fa-angle-right"></i></a>
             </div>
--->
             <!-- slider navigation  end -->
         </div>
     </div>
