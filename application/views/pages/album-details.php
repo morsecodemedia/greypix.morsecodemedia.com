@@ -4,6 +4,11 @@
     <!--page title -->
     <div class="fixed-title"><span><?php echo $album[0]->title; ?></span></div>
     <!--page title end -->
+          <div class="count-folio">
+          <div class="num-album"></div>
+          <div class="all-album"></div>
+      </div>
+      <!-- Portf
     <!--=============== content ===============-->
     <div class="content full-height">
         <!--=============== description column  ===============-->
@@ -40,7 +45,9 @@
             </div>
         </div>
         <!--description column end -->
-        <!-- portfolio  Images  -->                                        
+<!--
+        
+        //-- portfolio  Images  --                                       
         <div class="resize-carousel-holder vis-info">
             <div class="swiper-container viom" id="horizontal-slider" data-mwc="1" data-mwa="0">
                 <div class="swiper-wrapper">
@@ -65,13 +72,53 @@
                 </div>
                 <div class="pagination hide"></div>
             </div>
-            <!-- slider navigation  -->
+            //-- slider navigation  --
             <div class="swiper-nav-holder hor hs">
                 <a class="swiper-nav arrow-left transition " href="#"><i class="fa fa-angle-left"></i></a>
                 <a class="swiper-nav  arrow-right transition" href="#"><i class="fa fa-angle-right"></i></a>
             </div>
-            <!-- slider navigation  end -->
+            //-- slider navigation  end --
         </div>
+        
+       
+--> 
+        <!--=============== portfolio holder ===============-->
+      <div class="resize-carousel-holder">
+          <div class="p_horizontal_wrap">
+              <div id="portfolio_horizontal_container">
+                  <?php if (!empty($album[0]->photoset)) : ?>
+                    <?php foreach ($album[0]->photoset as $photo) : ?>                  <!-- portfolio item -->
+                  <div class="portfolio_item {tags}">
+                      <img src="<?php echo (isset($photo->lg1600_size)) ? $photo->lg1600_size : $photo->orig_size; ?>" alt="<?php echo $photo->title; ?>">
+                      <div class="port-desc-holder">
+                          <div class="port-desc">
+                              <div class="overlay"></div>
+                              <div class="grid-item">
+                                  <h3><?php echo $photo->title; ?></h3>
+                                  <span><?php echo ($photo->description) ? "<p>".$photo->description."</p>" : ""; ?></span>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="port-subtitle-holder">
+                          <div class="port-subtitle">
+                              <h3><?php echo $photo->title; ?></a></h3>
+                              <span><?php echo ($photo->description) ? "<p>".$photo->description."</p>" : ""; ?></span>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- portfolio item end -->
+                <?php endforeach; ?>
+              <?php endif; ?>                              
+              </div>
+              <!--portfolio_horizontal_container  end-->        
+          </div>
+          <!--p_horizontal_wrap  end-->                    
+      </div>
+        
+        
+        
+        
+        
     </div>
     <!-- Content end  -->  
 </div>
