@@ -27,7 +27,7 @@ class Home extends CI_Controller {
 	public function index()
 	{
 	  
-	  $randPix = $this->gpdb->getRandomPicturesLimitedBy(12);
+	  $randPix = $this->gpdb->getRandomPicturesLimitedBy(16);
     
     if ($randPix) {
       foreach ($randPix as $rp) {
