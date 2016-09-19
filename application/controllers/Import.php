@@ -79,6 +79,7 @@ class Import extends CI_Controller {
 	
 	public function import_albums()
 	{
+    $this->db->cache_delete_all();
     
     $frob           = $this->flickr->f->auth();
     $token          = $this->flickr->f->auth_checkToken();  
@@ -137,8 +138,6 @@ class Import extends CI_Controller {
       }
             
     }
-    
-    $this->db->cache_delete_all();
     
     // output message
     $this->msg['newAlbums']     += $this->newAlbums;

@@ -115,7 +115,8 @@ class Greypix_model extends CI_Model {
   {
   
     $this->db->cache_on();
-    $photo = $this->db->get_where("pictures", array("id" => $photoID));
+    $this->db->get_where("pictures", array("id" => $photoID));
+    $photo = $this->db->limit(1);
     
     return $photo->result();
     

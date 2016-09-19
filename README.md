@@ -45,7 +45,6 @@ Being that the wrapper and the CI library utilizing the wrapper were both writte
 ## Photography Section
 
 - Create functionality to remove photos/albums from database that no longer return from Flickr API
-- Implement Database Caching
 - Add functionality to convert all images to Data URIs
 	
 ## Video Section
