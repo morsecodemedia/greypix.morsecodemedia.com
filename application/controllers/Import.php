@@ -146,7 +146,7 @@ class Import extends CI_Controller {
     $this->msg['newPhotos']     += $this->newPhotos;
     $this->msg['updatedPhotos'] += $this->updatedPhotos;
     $this->msg['deletedPhotos'] += $this->deletedPhotos;
-    $this->msg['executionTime'] += (microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"])/60;
+    $this->msg['executionTime'] += date('H:i:s', strtotime((microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"])/60);
     
     $this->data['message'] = $this->msg;
     
@@ -228,6 +228,7 @@ class Import extends CI_Controller {
       
       // check if the photo exist
       $photoExists = $this->gpdb->getPictureByID($photo['id']);
+      echo "<pre>"; print_r($photoExists); echo "</pre>";exit;
       if (!empty($photoExists)) {
         // insert photo into database
         $this->gpdb->insertIntoDB($photoDetailsPayload, "pictures");

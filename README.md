@@ -41,10 +41,13 @@ Being that the wrapper and the CI library utilizing the wrapper were both writte
 - Documentation
 - Write blog post
 - Create project page on morsecodemedia.com
+- MAKE THE SITE FASTER.
 
 ## Photography Section
 
 - Create functionality to remove photos/albums from database that no longer return from Flickr API
+- Rewrite the templates to have the albums-detail template to be mix of what it currently is and the the albums-landing page. I like the slider and the X of Y better from the albums-landing page than I do from the album-details page. 
+- Rewrite the implementation of the carousels to allow the data-src to use data URIs of the images and enable the lazyLoad feature from the Owl Carousel which is apparently disabled based on the amount of customizations built in.
 - Add functionality to convert all images to Data URIs
 	
 ## Video Section
