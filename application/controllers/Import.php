@@ -228,7 +228,7 @@ class Import extends CI_Controller {
       
       // check if the photo exist
       $photoExists = $this->gpdb->getPictureByID($photo['id']);
-      echo "<pre>"; print_r($photoExists); echo "</pre>";
+
       if (!empty($photoExists)) {
         // insert photo into database
         $this->gpdb->insertIntoDB($photoDetailsPayload, "pictures");
@@ -253,7 +253,7 @@ class Import extends CI_Controller {
         }
       } else {
         // the photo already exists - let's check if it has been updated
-        if ($photoDetailsPayload['lastupdate'] > $photoExists->lastupdate) {
+        if ($photoDetailsPayload['lastupdate'] > $photoExists['lastupdate']) {
           // update picture record
           $this->gpdb->insertIntoDB($photoDetailsPayload, "pictures", $photo['id']);
           // ! TODO: update picture sizes
