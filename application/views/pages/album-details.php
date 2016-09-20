@@ -47,7 +47,9 @@
                   <?php if (!empty($album[0]->photoset)) : ?>
                     <?php foreach ($album[0]->photoset as $photo) : ?>
                       <div class="swiper-slide">
-                          <div class="bg bg-slider" style="background-image:url(<?php echo $photo->orig_size; ?>)"></div>
+                          <div class="bg bg-slider" style="background-image:url(<?php echo $photo->orig_size; ?>)">
+                            <img src="/dist/images/trans.gif" style="height: 100%; width: 100%;" />
+                          </div>
                           <div class="zoomimage"><img src="<?php echo $photo->orig_size; ?>" class="intense" alt=""><i class="fa fa-expand"></i></div>
                           <?php if ($photo->title) : ?>
                             <div class="show-info">
