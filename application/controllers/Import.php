@@ -252,6 +252,7 @@ class Import extends CI_Controller {
           
         }
       } else {
+        echo "<pre>"; print_r($photoExists); echo "</pre>";exit;
         // the photo already exists - let's check if it has been updated
         if ($photoDetailsPayload['lastupdate'] > $photoExists['lastupdate']) {
           // update picture record
