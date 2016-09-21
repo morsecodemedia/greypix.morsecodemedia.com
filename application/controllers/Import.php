@@ -28,13 +28,15 @@ class Import extends CI_Controller {
     $this->updatedPhotos  = 0;
     $this->deletedPhotos  = 0;
     $this->skippedPhotos  = 0;
+    $this->executionTime  = 0;
     $this->msg            = array("newAlbums"     => 0,
                                   "updatedAlbums" => 0,
                                   "deletedAlbums" => 0,
                                   "newPhotos"     => 0,
                                   "updatedPhotos" => 0,
                                   "deletedPhotos" => 0,
-                                  "skippedPhotos" => 0
+                                  "skippedPhotos" => 0,
+                                  "executionTime" => 0
                                  );
     
 	  
