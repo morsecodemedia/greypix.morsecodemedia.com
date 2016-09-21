@@ -27,12 +27,15 @@ class Import extends CI_Controller {
     $this->newPhotos      = 0;
     $this->updatedPhotos  = 0;
     $this->deletedPhotos  = 0;
+    $this->skippedPhotos  = 0;
     $this->msg            = array("newAlbums"     => 0,
                                   "updatedAlbums" => 0,
                                   "deletedAlbums" => 0,
                                   "newPhotos"     => 0,
                                   "updatedPhotos" => 0,
-                                  "deletedPhotos" => 0
+                                  "deletedPhotos" => 0,
+                                  "skippedPhotos" => 0,
+                                  "executionTime" => 0
                                  );
     
 	  
@@ -233,7 +236,10 @@ class Import extends CI_Controller {
       
       // check if the photo exist
       $photoExists = $this->gpdb->getPictureByID($photo['id']);
-
+      
+      echo "<pre>"; print_r("Photo ID: ".$photo['id']); echo "</pre>";
+      echo "<pre>"; print_r($photoExists); echo "</pre>";
+      
       if (empty($photoExists)) {
         // insert photo into database
         $this->gpdb->insertIntoDB($photoDetailsPayload, "pictures");
@@ -265,6 +271,8 @@ class Import extends CI_Controller {
           // - blow out all records by photo id
           // - add new records
           $this->updatedPhotos++;
+        } else {
+          $this->skippedPhotos++;
         }
       }
       
