@@ -34,8 +34,7 @@ class Import extends CI_Controller {
                                   "newPhotos"     => 0,
                                   "updatedPhotos" => 0,
                                   "deletedPhotos" => 0,
-                                  "skippedPhotos" => 0,
-                                  "executionTime" => 0
+                                  "skippedPhotos" => 0
                                  );
     
 	  
@@ -236,9 +235,6 @@ class Import extends CI_Controller {
       
       // check if the photo exist
       $photoExists = $this->gpdb->getPictureByID($photo['id']);
-      
-      echo "<pre>"; print_r("Photo ID: ".$photo['id']); echo "</pre>";
-      echo "<pre>"; print_r($photoExists); echo "</pre>";
       
       if (!$photoExists || empty($photoExists)) {
         // insert photo into database
