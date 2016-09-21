@@ -221,6 +221,8 @@ class Import extends CI_Controller {
       return false;
     }
     
+    echo "<pre>"; print_r($photos); echo "</pre>";exit;
+    
     // loop through the photos
     foreach ($photos['photoset']['photo'] as $photo) {
       // get photo details
