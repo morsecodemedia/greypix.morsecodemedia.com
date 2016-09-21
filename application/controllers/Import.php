@@ -221,13 +221,15 @@ class Import extends CI_Controller {
       return false;
     }
     
-    echo "<pre>"; print_r($photos); echo "</pre>";exit;
+    echo "<pre>"; print_r($photos); echo "</pre>";
     
     // loop through the photos
     foreach ($photos['photoset']['photo'] as $photo) {
       // get photo details
-      $photoDetailsPayload = $this->getPhotoDetailsByID($photo['id']);;
+      $photoDetailsPayload = $this->getPhotoDetailsByID($photo['id']);
       
+      echo "<pre>"; print_r($photoDetailsPayload); echo "</pre>";exit;
+
       // check if the photo exist
       $photoExists = $this->gpdb->getPictureByID($photo['id']);
 
