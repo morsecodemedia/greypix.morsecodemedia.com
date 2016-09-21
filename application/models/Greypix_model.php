@@ -14,7 +14,7 @@ class Greypix_model extends CI_Model {
    * @param bool $updateRecord
    *
   **/
-  public function insertIntoDB($payload=array(), $table, $updateRecord=false)
+  public function insertIntoDB($payload=array(), $table, $updateRecord=null)
   {
     
     if (!is_array($payload)) {
@@ -23,7 +23,8 @@ class Greypix_model extends CI_Model {
     
     if ($updateRecord) {
       // update record
-      $this->db->replace($table, $payload);
+      $this->db->where("id", $updateRecord);
+      $this->db->update($table, $payload);
     } else {
       // insert record
       $this->db->insert($table, $payload);
