@@ -150,7 +150,8 @@ class Import extends CI_Controller {
     $this->msg['newPhotos']     += $this->newPhotos;
     $this->msg['updatedPhotos'] += $this->updatedPhotos;
     $this->msg['deletedPhotos'] += $this->deletedPhotos;
-    $this->msg['executionTime'] = gmdate("H:i:s", (microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"]));  //(microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"])/60;
+    $this->msg['skippedPhotos'] += $this->skippedPhotos;
+    $this->msg['executionTime'] = gmdate("H:i:s", (microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"]));
     
     $this->data['message'] = $this->msg;
     
