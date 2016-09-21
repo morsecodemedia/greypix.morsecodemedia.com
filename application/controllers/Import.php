@@ -221,19 +221,20 @@ class Import extends CI_Controller {
       return false;
     }
     
-    echo "<pre>"; print_r($photos); echo "</pre>";
-    
     // loop through the photos
     foreach ($photos['photoset']['photo'] as $photo) {
       // get photo details
       $photoDetailsPayload = $this->getPhotoDetailsByID($photo['id']);
       
-      echo "<pre>"; print_r($photoDetailsPayload); echo "</pre>";exit;
-
+      // if a title isn't supplied, let's just drop in a formatted timestamp from when it was uploaded  
+      if (empty($photoDetailsPayload['title'])) {
+        $photoDetailsPayload['title'] = str_replace("-", "", str_replace(":", "", str_replace(" ", "_", $photoDetailsPayload['dateuploaded'])));
+      }
+      
       // check if the photo exist
       $photoExists = $this->gpdb->getPictureByID($photo['id']);
 
-      if (!empty($photoExists)) {
+      if (empty($photoExists)) {
         // insert photo into database
         $this->gpdb->insertIntoDB($photoDetailsPayload, "pictures");
         $this->newPhotos++;
@@ -256,6 +257,7 @@ class Import extends CI_Controller {
           
         }
       } else {
+        echo "<pre>"; print_r("Photo Exists"); echo "</pre>";
         echo "<pre>"; print_r($photoExists); echo "</pre>";exit;
         // the photo already exists - let's check if it has been updated
         if ($photoDetailsPayload['lastupdate'] > $photoExists['lastupdate']) {
