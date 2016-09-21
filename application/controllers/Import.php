@@ -235,6 +235,8 @@ class Import extends CI_Controller {
       $photoExists = $this->gpdb->getPictureByID($photo['id']);
 
       if (empty($photoExists)) {
+        echo "<pre>"; print_r("Apparently it is saying I don't exist"); echo "</pre>";
+        echo "<pre>"; print_r($photoExists); echo "</pre>";exit;
         // insert photo into database
         $this->gpdb->insertIntoDB($photoDetailsPayload, "pictures");
         $this->newPhotos++;
@@ -257,7 +259,10 @@ class Import extends CI_Controller {
           
         }
       } else {
-
+        echo "<pre>"; print_r("The system realizes that I exist, however this will mean the update check below is wrong"); echo "</pre>";
+        echo "<pre>"; print_r("API: " . strtotime($photoDetailsPayload['lastupdate'])); echo "</pre>";
+        echo "<pre>"; print_r("Database: " . strtotime($photoExists[0]->lastupdate)); echo "</pre>";
+        exit;
         // the photo already exists - let's check if it has been updated
         if (strtotime($photoDetailsPayload['lastupdate']) > strtotime($photoExists[0]->lastupdate)) {
           // update picture record
