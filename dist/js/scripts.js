@@ -620,4 +620,21 @@ function initgalheight() {
 $(document).ready(function() {
     initOutdoor();
     initparallax();
+    
+    
+    // Disable the rightclick until I can build a custom context menu and use data uris in the sliders
+    if (document.addEventListener) {
+        document.addEventListener('contextmenu', function(e) {
+            //alert("You've tried to open context menu"); //here you draw your own menu
+            e.preventDefault();
+        }, false);
+    } else {
+        document.attachEvent('oncontextmenu', function() {
+            //alert("You've tried to open context menu");
+            window.event.returnValue = false;
+        });
+    }
+    
+    
+    
 });
