@@ -10,7 +10,10 @@ AuthName "GreyPix is a Protected Site"
 AuthType Basic
 AuthUserFile /home/mcmuser/config/greypix.morsecodemedia.com/.htpasswd
 Require valid-user
+# The BCP
 Allow from 98.221.40.205
+# GSW Newtown Internal IP
+Allow from 12.226.121.10
 Satisfy Any
 
 <IfModule mod_rewrite.c>
@@ -18,8 +21,8 @@ Satisfy Any
 	RewriteBase /
 	
 	## This Bad Mamma Jamma right here will force all pages to use the HTTPS protocol.
-	#RewriteCond %{HTTP:X-Forwarded-Proto} !https
-	#RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+	RewriteCond %{HTTP:X-Forwarded-Proto} !https
+	RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 	
 	# Forces Trailing Slash
 	RewriteCond %{REQUEST_URI}  !\.(php|html?|jpg|gif|css|js|png|mp4|mov|avi|jpeg|txt|pdf|xml|swf|htc|svg|rar|zip|ttf|eot|woff|woff2)$
