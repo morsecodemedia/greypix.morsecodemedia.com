@@ -4,18 +4,6 @@ AddType image/svg+xml .svg
 AddType application/vnd.ms-fontobject .eot
 AddDefaultCharset UTF-8
 
-Order deny, allow
-Deny from all
-AuthName "GreyPix is a Protected Site"
-AuthType Basic
-AuthUserFile /home/mcmuser/config/greypix.morsecodemedia.com/.htpasswd
-Require valid-user
-# The BCP
-Allow from 98.221.40.205
-# GSW Newtown Internal IP
-Allow from 12.226.121.10
-Satisfy Any
-
 <IfModule mod_rewrite.c>
 	RewriteEngine On
 	RewriteBase /
