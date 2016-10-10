@@ -9,8 +9,8 @@ AddDefaultCharset UTF-8
 	RewriteBase /
 	
 	## This Bad Mamma Jamma right here will force all pages to use the HTTPS protocol.
-	RewriteCond %{HTTP:X-Forwarded-Proto} !https
-	RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+	#RewriteCond %{HTTP:X-Forwarded-Proto} !https
+	#RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 	
 	# Forces Trailing Slash
 	RewriteCond %{REQUEST_URI}  !\.(php|html?|jpg|gif|css|js|png|mp4|mov|avi|jpeg|txt|pdf|xml|swf|htc|svg|rar|zip|ttf|eot|woff|woff2)$
